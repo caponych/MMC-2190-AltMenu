@@ -1,0 +1,7 @@
+ErrorLevel ("off")
+ #Замена шрифта
+ RegWriteDWord("HKLM","System\GDI","FontLinkMethods",1)
+ RegWriteString("HKLM","System\GDI\SYSFNT","Nm", "Kor_Itelma")
+ #RegWriteString("HKLM","System\GDI\SYSFNT","Nm", "Tahoma")
+ RegWriteString("HKLM","SOFTWARE\Microsoft\FontLink\SystemLink","Kor_itelma", "\windows\FONTS\Kor_Itema_Bold.ttf")
+Exit

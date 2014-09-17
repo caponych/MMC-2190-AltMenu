@@ -1,0 +1,4 @@
+ErrorLevel ("off")
+Path=SystemPath("ScriptPath")
+Run(Path&"\..\Tools\ToggleInputPanel.exe")
+exit

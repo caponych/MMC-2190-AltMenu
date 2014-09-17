@@ -1,0 +1,21 @@
+Path=SystemPath("ScriptPath")
+Kill("MMC.exe")
+kill("explorer.exe")
+Run(Path&"\..\Menu\LadaTools\Tools\FirstInitMMC.exe")
+Sleep(2000)
+CreateShortcut("\Windows\desktop\NewMenu.lnk",Path&"\NewMenu.exe")
+CreateShortcut("\Windows\desktop\NewMenu Uninstall.lnk",Path&"\Uninstall.exe")
+CreateShortcut("\Windows\desktop\TOOLS.lnk","\StaticStore\Menu\LadaTools\Tools")
+#RegWriteDWord("HKCU","ControlPanel\Volume","Mute",7)
+#Run("\Windows\ctlpnl.exe", "\Windows\cplmain.cpl,10")
+#Sleep(500)
+#SendOK
+XCopy(Path&"\win\*.*","\Windows",True,True)
+Sleep(1000)
+  If (FileExists("USB Disk\explorer.txt"))
+   Run("\Windows\explorer.exe")
+   Exit
+  EndIf
+Run(Path&"\..\Menu\NewMenu.exe")
+Run(Path&"\..\Menu\LadaTools\MMCCore.ahk")
+Exit

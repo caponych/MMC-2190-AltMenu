@@ -1,0 +1,53 @@
+ErrorLevel ("off")
+Path=SystemPath("ScriptPath")
+
+naviprogrunning=0
+
+If (ProcExists("Navitel.exe"))
+NaviProg="Navi\Navitel\Navitel.exe"
+naviprogrunning=1
+endif
+
+If (ProcExists("CityGuideCE.exe"))
+NaviProg="Navi\CityGuide\CityGuideCE.exe"
+naviprogrunning=1
+endif
+
+If (ProcExists("yandexmapsCE.exe"))
+NaviProg="Navi\YandexMap\yandexmapsCE.exe"
+naviprogrunning=1
+endif
+
+If (ProcExists("7ways.exe"))
+NaviProg="Navi\7ways\7ways.exe"
+naviprogrunning=1
+endif
+
+If (ProcExists("progorod.exe"))
+NaviProg="Navi\progorod\progorod.exe"
+naviprogrunning=1
+endif
+
+If (ProcExists("GPSTacho.exe"))
+NaviProg="Menu\LadaTools\Tools\GPSTacho\GPSTacho.exe"
+naviprogrunning=1
+endif
+
+If(naviprogrunning = 1) 
+If (FileExists(Path&"\..\..\..\"&NaviProg))
+ NaviPath=Path&"\..\..\..\"&NaviProg
+Endif
+If (FileExists("\SDMMC\"&NaviProg))
+ NaviPath="\SDMMC\"&NaviProg
+Endif
+If (FileExists("\USB Disk\"&NaviProg))
+ NaviPath="\USB Disk\"&NaviProg
+Endif
+Run(NaviPath)
+endif
+
+If(naviprogrunning = 0) 
+ Run(Path&"\progorod.mscr")
+Endif
+
+exit

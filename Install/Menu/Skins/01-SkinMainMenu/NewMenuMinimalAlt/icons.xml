@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!--NewMenu for LadaKalina/Priora/Granta-->
+<root>
+    <screen header="Main">
+        <icon name="Навигация" image="Icons\navi.png" exec="\StaticStore\Menu\LadaTools\MortScript\NaviStart.exe" animation="1" />
+        <icon name="Аудио" image="Icons\audio.png" exec="\StaticStore\Menu\LadaTools\MortScript\audio.mscr" animation="1" />
+        <icon name="Видео" image="Icons\video.png" exec="\StaticStore\Menu\LadaTools\SendCommand\media.ahk" animation="1" />
+        <icon name="Радио" image="Icons\radio.png" exec="\StaticStore\Menu\LadaTools\SendCommand\LadaRadio.ahk" animation="1" />
+        <icon name="Настройки" image="Icons\settings.png" exec="--goto:1" animation="0" />
+        <icon name="Выход" image="Icons\power.png" exec="\StaticStore\Menu\LadaTools\Exit.ahk" animation="0" />
+    </screen>
+    <screen header="Settings">
+        <icon name="Назад" image="Icons\SHome.png" exec="--goto:0" animation="0" />
+        <icon name="Настройки звука" image="Icons\SSound.png" exec="\StaticStore\Menu\LadaTools\SendCommand\LadaSoundSettings.ahk" animation="1" />
+        <icon name="Настройки экрана" image="Icons\SScreen.png" exec="\StaticStore\Menu\LadaTools\SendCommand\LadaVideoSettings.ahk" animation="1" />
+        <icon name="Парковочная камера" image="Icons\SCam.png" exec="\StaticStore\Menu\LadaTools\SendCommand\LadaRearViewCam.ahk" animation="0" />
+        <icon name="Настройки NewMenu" image="Icons\SScin.png" exec="\StaticStore\Menu\LadaTools\SkinChanger.ahk" animation="0" />
+        <icon name="OBDII коды" image="Icons\OBDII.png" exec="\StaticStore\Menu\LadaTools\Tools\OBDII_Code\obdII.ahk" animation="0" />
+    </screen>
+    <BottomBar>
+        <icon type="7" animation="0" />
+        <icon image="-" type="7" typeParams="dd/MM/yyyy" exec="\StaticStore\Menu\LadaTools\SendCommand\SaverStart.ahk" animation="0" />
+        <icon type="12" animation="0" />
+    </BottomBar>
+</root>

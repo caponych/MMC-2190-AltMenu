@@ -1,0 +1,6 @@
+ErrorLevel ("off")
+Path=SystemPath("ScriptPath")
+DelTree(Path&"\..\Tools\Opera\keychain\*.*")
+# Run ("\Windows\rnaapp.exe"," -e""MTS"" -m -p -n")
+Run (Path&"\..\Tools\Opera\Opera.exe")
+Exit

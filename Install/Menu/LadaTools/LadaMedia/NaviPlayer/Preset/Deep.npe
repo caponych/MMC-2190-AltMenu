@@ -1,0 +1,16 @@
+[NaviPlayer]
+Version=100
+
+[Equalizer]
+Enable=1
+Preamp=31
+0=21
+1=24
+2=28
+3=29
+4=25
+5=26
+6=28
+7=35
+8=38
+9=40

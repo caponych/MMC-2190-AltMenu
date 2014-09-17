@@ -1,0 +1,27 @@
+ErrorLevel ("off")
+
+If (ProcExists("Navitel.exe"))
+Kill("Navitel.exe")
+endif
+
+If (ProcExists("CityGuideCE.exe"))
+Kill("CityGuideCE.exe")
+endif
+
+If (ProcExists("yandexmapsCE.exe"))
+Kill("yandexmapsCE.exe")
+endif
+
+If (ProcExists("7ways.exe"))
+Kill("7ways.exe")
+endif
+
+If (ProcExists("progorod.exe"))
+Kill("progorod.exe")
+endif
+
+If (ProcExists("GPSTacho.exe"))
+Kill("GPSTacho.exe")
+endif
+
+exit

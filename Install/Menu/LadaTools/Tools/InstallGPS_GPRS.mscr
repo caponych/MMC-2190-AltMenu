@@ -1,0 +1,19 @@
+ErrorLevel ("off")
+
+int = Question("Install GPS/GPRS driver?","USB serial driver","YESNo" )
+
+If(int = 1) 
+Message("Press 'OK' and plug GPS/GPRS adapter")
+Title = "USB"
+DriverPath = "\StaticStore\Start\dll\232USB.DLL"
+While (TRUE)
+ If (WndExists(Title))
+  SendKeys(Title, DriverPath)
+  Exit
+ EndIf
+ Sleep(2000)
+EndWhile
+EndIf 
+
+Exit
+

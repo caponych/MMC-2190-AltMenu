@@ -1,0 +1,7 @@
+ErrorLevel ("off")
+Path=SystemPath("ScriptPath")
+ Kill("NewMenu.exe")
+ Delete(Path&"\..\..\..\icons\BCKGR.jpg") 
+ Copy(Path&"\BCKGR.jpg",Path&"\..\..\..\icons\BCKGR.jpg")
+ Run(Path&"\..\..\..\NewMenu.exe")
+Exit

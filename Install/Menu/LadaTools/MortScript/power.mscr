@@ -1,0 +1,22 @@
+ErrorLevel ("off")
+if (WndExists("Nitrogen"))
+Close("Nitrogen")
+endif
+
+#RegWriteString( "HKLM", "init", "Launch50", "\Program Files\MMC\MMC.exe")
+#reset
+
+close("MMCCore")
+Sleep(500)
+kill("explorer.exe")
+Kill("LadaSound.exe")
+Kill("media.exe")
+Kill("NaviPlayer.exe")
+Kill("NewMenu.exe")
+Kill("Button.exe")
+Sleep(500)
+Kill("AutohotkeyCE.exe")
+Run("\Program Files\MMC\MMC.exe")
+Sleep(5000)
+Run("\StaticStore\Start\Start.exe")
+exit

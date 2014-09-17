@@ -1,0 +1,3 @@
+ErrorLevel ("off")
+Kill("media.exe")
+Exit

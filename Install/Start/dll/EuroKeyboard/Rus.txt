@@ -1,0 +1,691 @@
+﻿#
+# этот файл должет быть в кодировке UTF16 или UTF8
+#
+
+# картинки (не обязательно)
+SKINVGA		"skin2rus.bmp"
+
+# размер клавиатуры для QVGA, для VGA умножается на 2
+SIZE		240	80
+
+# размер и цвет бордюра попапа
+POPBORDER	4 4 4 4	0x000099
+
+# цвета кнопок на попапе
+LATIN		0x000000	0xFFFFFF
+LATIN_EX	0x000000	0xFFFFFF
+DIGIT		0x000000	0xE0E0E0
+SMALL		0x000000	0xCCCCFF
+CYRILLIC	0xFFFFFF	0xCCFFCC
+CYR_EX		0x000000	0x669966
+GREEK		0x000000	0xFFFF00
+THAI		0x000000	0xFFFFFF
+ARABIC		0x000000	0xFFFFFF
+HEBREW		0x000000	0xFFFFFF
+CONTROL		0x000000	0xFF00FF
+ALT		0x000000	0xFF00FF
+SHIFT		0x000000	0xFF00FF
+
+# цвета мелких буковок на кнопках
+DESC		0xFFFFFF	0x000000
+
+# шрифты (размеры для QVGA, для VGA умножаются на 2)
+FONT_BIG	"Tahoma"	11
+FONT_SMALL	"Tahoma"	8
+FONT_INDEX	"Tahoma"	7
+
+########################################################################
+#§¶
+#	vk	data	rect	group	desc	desc2
+
+=	'1'	'1'	0	0	20	16	DIGIT	'!'
++	'1'	'!'	0	-16	20	0	DIGIT
++	0x1B	0	0	-32	20	-16	SMALL	"Esc"
++	0x70	0	20	-32	36	-16	SMALL	"F1"
++	0x09	0x09	20	16	52	32	SMALL
+#	"Tab"
++	'1'	'¹'	20	0	36	16	DIGIT
++	'1'	'½'	36	0	52	16	DIGIT
++	'1'	'¼'	52	0	68	16	DIGIT
++	'1'	'⅛'	68	0	84	16	DIGIT
+#+	'1'	'⅓'	52	0	68	16	DIGIT
++	'1'	'1'	0	16	20	32	CONTROL	"C+1"
+
++	'1'	'¡'	20	-16	36	0	DIGIT
++	'1'	'‼'	36	-16	52	0	DIGIT
+
+=	'2'	'2'	20	0	40	16	DIGIT	'@'
++	'2'	'@'	0	-16	20	0	DIGIT
++	0x71	0	0	-32	20	-16	SMALL	"F2"
++	'2'	'²'	20	0	36	16	DIGIT
++	'2'	'2'	0	16	20	32	CONTROL	"C+2"
+
+=	'3'	'3'	40	0	60	16	DIGIT	'#'
++	'3'	'#'	0	-16	20	0	DIGIT
++	0x72	0	0	-32	20	-16	SMALL	"F3"
++	'3'	'³'	20	0	36	16	DIGIT
++	'3'	'№'	20	-16	36	0	DIGIT
++	'3'	'¾'	36	0	52	16	DIGIT
++	'3'	'⅜'	52	0	68	16	DIGIT
++	'3'	'3'	0	16	20	32	CONTROL	"C+3"
+
+=	'4'	'4'	60	0	80	16	DIGIT	'$'
++	'4'	'$'	0	-16	20	0	DIGIT
++	0x73	0	0	-32	20	-16	SMALL	"F4"
++	'4'	'€'	20	0	36	16	DIGIT
++	'4'	'¢'	20	-16	36	0	DIGIT
++	'4'	'₤'	36	0	52	16	DIGIT
++	'4'	'¥'	36	-16	52	0	DIGIT
++	'4'	'4'	0	16	20	32	CONTROL	"C+4"
+
+=	'5'	'5'	80	0	100	16	DIGIT	'%'
++	'5'	'%'	0	-16	20	0	DIGIT
++	0x74	0	0	-32	20	-16	SMALL	"F5"
++	'5'	'‰'	20	-16	36	0	DIGIT
++	'5'	'⅝'	20	0	36	16	DIGIT
++	'5'	'5'	0	16	20	32	CONTROL	"C+5"
+
+=	'6'	'6'	100	0	120	16	DIGIT	'^'
++	'6'	'^'	0	-16	20	0	DIGIT
++	0x75	0	0	-32	20	-16	SMALL	"F6"
++	'6'	'6'	0	16	20	32	CONTROL	"C+6"
+
+=	'7'	'7'	120	0	140	16	DIGIT	'&'
++	'7'	'&'	0	-16	20	0	DIGIT
++	0x76	0	0	-32	20	-16	SMALL	"F7"
++	'7'	'⅞'	20	0	36	16	DIGIT
++	'7'	'7'	0	16	20	32	CONTROL	"C+7"
+
+=	'8'	'8'	140	0	160	16	DIGIT	'*'
++	'8'	'*'	0	-16	20	0	DIGIT
++	0x77	0	0	-32	20	-16	SMALL	"F8"
++	'8'	'∞'	20	0	36	16	DIGIT
++	'8'	'×'	20	-16	36	0	DIGIT
++	'8'	'•'	36	-16	52	0	DIGIT
++	'8'	'8'	0	16	20	32	CONTROL	"C+8"
+
+=	'9'	'9'	160	0	180	16	DIGIT	'('
++	'9'	'('	0	-16	20	0	DIGIT
++	0x78	0	0	-32	20	-16	SMALL	"F9"
++	'9'	'9'	0	16	20	32	CONTROL	"C+9"
+
+=	'0'	'0'	180	0	200	16	DIGIT	')'
++	'0'	')'	0	-16	20	0	DIGIT
++	0x79	0	0	-32	20	-16	SMALL	"F10"
++	'0'	'°'	20	0	36	16	DIGIT
++	'0'	'0'	0	16	20	32	CONTROL	"C+0"
+#+	0x79	0	20	-32	44	-16	CONTROL	"C+F10"
+
+=	0xBD	'-'	200	0	220	16	DIGIT	'='
++	0xBD	'_'	0	-16	20	0	DIGIT
++	0xBB	'='	20	0	36	16	DIGIT
++	0xBB	'+'	20	-16	36	0	DIGIT
++	0x7A	0	0	-32	20	-16	SMALL	"F11"
++	0x7B	0	20	-32	36	-16	SMALL	"F12"
++	0xBD	'≠'	-16	-16	0	0	DIGIT
++	0xBB	'≈'	-32	0	-16	16	DIGIT
++	0xBD	'±'	-16	0	0	16	DIGIT
++	0xBB	'¯'	-32	-16	-16	0	DIGIT
++	0xBD	'Q'	0	16	20	32	CONTROL	"C+-"
++	0xBB	'Q'	20	16	36	32	CONTROL	"C+="
+
+=	0x08	0x08	220	0	240	16	SMALL	0
++	0x2E	0	0	-16	20	0	SMALL	"Del"
++	0x2D	0	0	-32	20	-16	SMALL	"Ins"
++	0x08	0x08	0	16	20	32	CONTROL	"C+Bs"
+########################################################################
+
+########################################################################
+#	vk	data	rect	group	desc	desc2
+#	vk	data	x	y	group	desc
+#=	0x09	0x09	0	16	21	32	SMALL
+
+=	'Q'	'й'	0	16	20	32	CYRILLIC	0	'q'
++	'Q'	'Й'	0	-16	20	0	CYRILLIC
++	'Q'	'q'	20	0	36	16	LATIN
++	'Q'	'Q'	20	-16	36	0	LATIN
++	'Q'	'Q'	0	16	20	32	CONTROL	"C+Q"
+
+=	'W'	'ц'	20	16	40	32	CYRILLIC	0	'w'
++	'W'	'Ц'	0	-16	20	0	CYRILLIC
++	'W'	'w'	20	0	36	16	LATIN
++	'W'	'W'	20	-16	36	0	LATIN
++	'W'	'џ'	36	0	52	16	CYR_EX
++	'W'	'Џ'	36	-16	52	0	CYR_EX
++	'W'	'W'	0	16	20	32	CONTROL	"C+W"
+
+=	'E'	'у'	40	16	60	32	CYRILLIC	0	'e'
++	'E'	'У'	0	-16	20	0	CYRILLIC
++	'E'	'e'	20	0	36	16	LATIN
++	'E'	'E'	20	-16	36	0	LATIN
++	'E'	'ў'	36	0	52	16	CYR_EX	#	belarusian
++	'E'	'Ў'	36	-16	52	0	CYR_EX	#	belarusian
+#+	'E'	'ү'	84	0 	100	16	CYR_EX	#	kazak	tatar
+#+	'E'	'Ү'	84	-16	100	0	CYR_EX	#	kazak	tatar
+#+	'E'	'ұ'	68	0	84	16	CYR_EX	#	kazak
+#+	'E'	'Ұ'	68	-16	84	0	CYR_EX	#	kazak
++	'E'	'ε'	52	0	68	16	GREEK
++	'E'	'Ε'	52	-16	68	0	GREEK
++	'E'	'é'	0	-32	20	-16	LATIN_EX	#	spanish	portugese
++	'E'	'É'	0	-48	20	-32	LATIN_EX	#	spanish	portugese
++	'E'	'ě'	20	-32	36	-16	LATIN_EX	#	czech
++	'E'	'Ě'	20	-48	36	-32	LATIN_EX	#	czech
++	'E'	'ę'	36	-32	52	-16	LATIN_EX	#	polish	lithuanian
++	'E'	'Ę'	36	-48	52	-32	LATIN_EX	#	polish	lithuanian
++	'E'	'ė'	52	-32	68	-16	LATIN_EX	#	lithuanian
++	'E'	'Ė'	52	-48	68	-32	LATIN_EX	#	lithuanian
++	'E'	'è'	68	-32	84	-16	LATIN_EX	#	french	catalan
++	'E'	'È'	68	-48	84	-32	LATIN_EX	#	french	catalan
++	'E'	'ê'	84	-32	100	-16	LATIN_EX	#	french	portugese
++	'E'	'Ê'	84	-48	100	-32	LATIN_EX	#	french	portugese
++	'E'	'ë'	100	-32	116	-16	LATIN_EX	#	french
++	'E'	'Ë'	100	-48	116	-32	LATIN_EX	#	french
++	'E'	'ē'	116	-32	132	-16	LATIN_EX	#	latvian
++	'E'	'Ē'	116	-48	132	-32	LATIN_EX	#	latvian
++	'E'	'E'	0	16	20	32	CONTROL	"C+E"
+
+=	'R'	'к'	60	16	80	32	CYRILLIC	0	'r'
++	'R'	'К'	0	-16	20	0	CYRILLIC
++	'R'	'r'	20	0	36	16	LATIN
++	'R'	'R'	20	-16	36	0	LATIN
+#+	'R'	'қ'	36	0	52	16	CYR_EX	#	kazak
+#+	'R'	'Қ'	36	-16	52	0	CYR_EX	#	kazak
++	'R'	'ќ'	36	0	52	16	CYR_EX	#	macedonian
++	'R'	'Ќ'	36	-16	52	0	CYR_EX	#	macedonian
++	'R'	'ρ'	52	0	68	16	GREEK
++	'R'	'Ρ'	52	-16	68	0	GREEK
++	'R'	'®'	0	-32	20	-16	DIGIT
++	'R'	'ř'	20	-32	36	-16	LATIN_EX	#	czech
++	'R'	'Ř'	20	-48	36	-32	LATIN_EX	#	czech
++	'R'	'R'	0	16	20	32	CONTROL	"C+R"
+
+=	'T'	'е'	80	16	100	32	CYRILLIC	0	't'
++	'T'	'Е'	0	-16	20	0	CYRILLIC
++	'T'	't'	20	0	36	16	LATIN
++	'T'	'T'	20	-16	36	0	LATIN
++	0xC0	'ё'	36	0	52	16	CYRILLIC
++	0xC0	'Ё'	36	-16	52	0	CYRILLIC
++	'T'	'є'	52	0	68	16	CYR_EX	#	ukrainian
++	'T'	'Є'	52	-16	68	0	CYR_EX	#	ukrainian
++	'T'	'τ'	68	0	84	16	GREEK
++	'T'	'Τ'	68	-16	84	0	GREEK
++	'T'	'™'	0	-32	20	-16	DIGIT
++	'T'	'†'	20	-32	36	-16	DIGIT	
++	'T'	'‡'	20	-48	36	-32	DIGIT	
++	'T'	'ţ'	36	-32	52	-16	LATIN_EX	#	romanian
++	'T'	'Ţ'	36	-48	52	-32	LATIN_EX	#	romanian
++	'T'	'þ'	52	-32	68	-16	LATIN_EX	#	icelandic
++	'T'	'Þ'	52	-48	68	-32	LATIN_EX	#	icelandic
++	'T'	'T'	0	16	20	32	CONTROL	"C+T"
+
+=	'Y'	'н'	100	16	120	32	CYRILLIC	0	'y'
++	'Y'	'Н'	0	-16	20	0	CYRILLIC
++	'Y'	'y'	20	0	36	16	LATIN
++	'Y'	'Y'	20	-16	36	0	LATIN
+#+	'Y'	'ң'	36	0	52	16	CYR_EX	#	kazak
+#+	'Y'	'Ң'	36	-16	52	0	CYR_EX	#	kazak
++	'Y'	'њ'	36	0	52	16	CYR_EX	#	serbian
++	'Y'	'Њ'	36	-16	52	0	CYR_EX	#	serbian
++	'Y'	'υ'	52	0	68	16	GREEK
++	'Y'	'Υ'	52	-16	68	0	GREEK
++	'Y'	'ý'	0	-32	20	-16	LATIN_EX	#	spanish	icelandic
++	'Y'	'Ý'	0	-48	20	-32	LATIN_EX	#	spanish	icelandic
++	'Y'	'ÿ'	20	-32	36	-16	LATIN_EX	#	french
++	'Y'	'Ÿ'	20	-48	36	-32	LATIN_EX	#	french
++	'Y'	'Y'	0	16	20	32	CONTROL	"C+Y"
+
+=	'U'	'г'	120	16	140	32	CYRILLIC	0	'u'
++	'U'	'Г'	0	-16	20	0	CYRILLIC
++	'U'	'u'	20	0	36	16	LATIN
++	'U'	'U'	20	-16	36	0	LATIN
++	'U'	'ґ'	36	0	52	16	CYR_EX	#	ukrainian	belarusian
++	'U'	'Ґ'	36	-16	52	0	CYR_EX	#	ukrainian	belarusian
+#+	'U'	'ғ'	52	0	68	16	CYR_EX	#	kazak
+#+	'U'	'Ғ'	52	-16	68	0	CYR_EX	#	kazak
++	'U'	'ѓ'	52	0	68	16	CYR_EX	#	macedonian
++	'U'	'Ѓ'	52	-16	68	0	CYR_EX	#	macedonian
++	'U'	'Θ'	68	0	84	16	GREEK
++	'U'	'θ'	68	-16	84	0	GREEK
++	'U'	'ú'	0	-32	20	-16	LATIN_EX	#	spanish
++	'U'	'Ú'	0	-48	20	-32	LATIN_EX	#	spanish
++	'U'	'ü'	20	-32	36	-16	LATIN_EX	#	german	french
++	'U'	'Ü'	20	-48	36	-32	LATIN_EX	#	german	french
++	'U'	'ű'	36	-32	52	-16	LATIN_EX	#	hungarian
++	'U'	'Ű'	36	-48	52	-32	LATIN_EX	#	hungarian
++	'U'	'ů'	52	-32	68	-16	LATIN_EX	#	czech
++	'U'	'Ů'	52	-48	68	-32	LATIN_EX	#	czech
++	'U'	'Ŭ'	68	-32	84	-16	LATIN_EX	#	esperanto
++	'U'	'Ŭ'	68	-48	84	-32	LATIN_EX	#	esperanto
++	'U'	'û'	-32	-32	-16	-16	LATIN_EX	#	french
++	'U'	'û'	-32	-48	-16	-32	LATIN_EX	#	french
++	'U'	'ù'	-16	-32	0	-16	LATIN_EX	#	french
++	'U'	'ù'	-16	-48	0	-32	LATIN_EX	#	french
++	'U'	'ų'	-48	-32	-32	-16	LATIN_EX	#	lithuanian
++	'U'	'Ų'	-48	-48	-32	-32	LATIN_EX	#	lithuanian
++	'U'	'ū'	-64	-32	-48	-16	LATIN_EX	#	lithuanian	latvian
++	'U'	'Ū'	-64	-48	-48	-32	LATIN_EX	#	lithuanian	latvian
++	'U'	'U'	0	16	20	32	CONTROL	"C+U"
+
+=	'I'	'ш'	140	16	160	32	CYRILLIC	0	'i'
++	'I'	'Ш'	0	-16	20	0	CYRILLIC
++	'I'	'i'	20	0	36	16	LATIN
++	'I'	'I'	20	-16	36	0	LATIN
++	'I'	0x0456	36	0	52	16	CYR_EX	#	ukrainian	belarusian	kazak	i
++	'I'	0x0406	36	-16	52	0	CYR_EX	#	ukrainian	belarusian	kazak	i
++	'I'	0x0457	52	0	68	16	CYR_EX	#	ukrainian	ї
++	'I'	0x0407	52	-16	68	0	CYR_EX	#	ukrainian	Ї
++	'I'	'ι'	68	0	84	16	GREEK
++	'I'	'Ι'	68	-16	84	0	GREEK
++	'I'	'í'	0	-32	20	-16	LATIN_EX	#	spanish	czech
++	'I'	'Í'	0	-48	20	-32	LATIN_EX	#	spanish	czech
++	'I'	'į'	20	-32	36	-16	LATIN_EX	#	lithuanian
++	'I'	'Į'	20	-48	36	-32	LATIN_EX	#	lithuanian
++	'I'	'ī'	36	-32	52	-16	LATIN_EX	#	latvian
++	'I'	'Ī'	36	-48	52	-32	LATIN_EX	#	latvian
++	'I'	'ï'	52	-32	68	-16	LATIN_EX	#	french	ï
++	'I'	'Ï'	52	-48	68	-32	LATIN_EX	#	french	Ï
++	'I'	'î'	68	-32	84	-16	LATIN_EX	#	french	romanian
++	'I'	'Î'	68	-48	84	-32	LATIN_EX	#	french	romanian
++	'I'	'ĳ'	84	-32	100	-16	LATIN_EX	#	dutch	
++	'I'	'Ĳ'	84	-48	100	-32	LATIN_EX	#	dutch	
++	'I'	'I'	0	16	20	32	CONTROL	"C+I"
+
+=	'O'	'щ'	160	16	180	32	CYRILLIC	0	'o'
++	'O'	'Щ'	0	-16	20	0	CYRILLIC
++	'O'	'o'	20	0	36	16	LATIN
++	'O'	'O'	20	-16	36	0	LATIN
++	'O'	'ο'	36	0	52	16	GREEK
++	'O'	'Ο'	36	-16	52	0	GREEK
++	'O'	'ó'	0	-32	20	-16	LATIN_EX	#	spanish	polish
++	'O'	'Ó'	0	-48	20	-32	LATIN_EX	#	spanish	polish
++	'O'	'ö'	20	-32	36	-16	LATIN_EX	#	german
++	'O'	'Ö'	20	-48	36	-32	LATIN_EX	#	german
++	'O'	'ő'	36	-32	52	-16	LATIN_EX	#	hungarian
++	'O'	'Ő'	36	-48	52	-32	LATIN_EX	#	hungarian
++	'O'	'ø'	52	-32	68	-16	LATIN_EX	#	danish	norwegian
++	'O'	'Ø'	52	-48	68	-32	LATIN_EX	#	danish	norwegian
++	'O'	'ô'	-16	-32	0	-16	LATIN_EX	#	french	portugese
++	'O'	'Ô'	-16	-48	0	-32	LATIN_EX	#	french	portugese
++	'O'	'œ'	-32	-32	-16	-16	LATIN_EX	#	french
++	'O'	'Œ'	-32	-48	-16	-32	LATIN_EX	#	french
++	'O'	'õ'	-48	-32	-32	-16	LATIN_EX	#	estonian	portugese
++	'O'	'Õ'	-48	-48	-32	-32	LATIN_EX	#	estonian	portugese
++	'O'	'ò'	-64	-32	-48	-16	LATIN_EX	#	catalan
++	'O'	'Ò'	-64	-48	-48	-32	LATIN_EX	#	catalan
++	'O'	'O'	0	16	20	32	CONTROL	"C+O"
+
+=	'P'	'з'	180	16	200	32	CYRILLIC	0	'p'
++	'P'	'З'	0	-16	20	0	CYRILLIC
++	'P'	'p'	20	0	36	16	LATIN
++	'P'	'P'	20	-16	36	0	LATIN
++	'P'	'π'	36	0	52	16	GREEK
++	'P'	'Π'	36	-16	52	0	GREEK
++	'P'	'P'	0	16	20	32	CONTROL	"C+P"
+
+=	0xDB	'х'	200	16	220	32	CYRILLIC	0	'['
++	0xDB	'Х'	0	-16	20	0	CYRILLIC
++	0xDB	'['	20	0	36	16	DIGIT
++	0xDB	'{'	20	-16	36	0	DIGIT
+#+	0xDB	'һ'	-16	0	0	16	CYR_EX	#	kazak	tatar
+#+	0xDB	'Һ'	-16	-16	0	0	CYR_EX	#	kazak	tatar
++	0xDB	'['	0	16	20	32	CONTROL	"C+["
+
+=	0xDD	'ъ'	220	16	240	32	CYRILLIC	0	']'
++	0xDD	'Ъ'	0	-16	20	0	CYRILLIC
++	0xDD	']'	-16	0	0	16	DIGIT
++	0xDD	'}'	-16	-16	0	0	DIGIT
++	0xDD	']'	0	16	20	32	CONTROL	"C+]"
+
+=	0x0D	0x0D	220	32	240	64	DIGIT	0	0
++	0x0D	0x0D	-12	32	20	48	CONTROL	"C+Enter"
+
+########################################################################
+
+
+
+########################################################################
+#	vk	data	rect	group	desc	desc2
+#	vk	data	x	y	group	desc
+#=	0x14	0	0	32	27	48	SMALL	"Caps"
+
+=	'A'	'ф'	0	32	20	48	CYRILLIC	0	'a'
++	'A'	'Ф'	0	-16	20	0	CYRILLIC
++	'A'	'a'	20	0	36	16	LATIN
++	'A'	'A'	20	-16	36	0	LATIN
++	'A'	'α'	36	0	52	16	GREEK
++	'A'	'Α'	36	-16	52	0	GREEK
++	'A'	'á'	0	-32	20	-16	LATIN_EX	#	spanish	portugese
++	'A'	'Á'	0	-48	20	-32	LATIN_EX	#	spanish	portugese
++	'A'	'ä'	20	-32	36	-16	LATIN_EX	#	german
++	'A'	'Ä'	20	-48	36	-32	LATIN_EX	#	german
++	'A'	'ą'	36	-32	52	-16	LATIN_EX	#	polish	lithuanian
++	'A'	'Ą'	36	-48	52	-32	LATIN_EX	#	polish	lithuanian
++	'A'	'å'	52	-32	68	-16	LATIN_EX	#	finnish	danish
++	'A'	'Å'	52	-48	68	-32	LATIN_EX	#	finnish	danish
++	'A'	'æ'	68	-32	84	-16	LATIN_EX	#	danish	french
++	'A'	'Æ'	68	-48	84	-32	LATIN_EX	#	danish	french
++	'A'	'à'	84	-32	100	-16	LATIN_EX	#	french	catalan	portugese
++	'A'	'À'	84	-48	100	-32	LATIN_EX	#	french	catalan	portugese
++	'A'	'â'	100	-32	116	-16	LATIN_EX	#	french	portugese	romanian
++	'A'	'Â'	100	-48	116	-32	LATIN_EX	#	french	portugese	romanian
++	'A'	'ā'	116	-32	132	-16	LATIN_EX	#	latvian
++	'A'	'Ā'	116	-48	132	-32	LATIN_EX	#	latvian
++	'A'	'ã'	132	-32	148	-16	LATIN_EX	#	portugese
++	'A'	'Ã'	132	-48	148	-32	LATIN_EX	#	portugese
++	'A'	'ă'	148	-32	164	-16	LATIN_EX	#	romanian
++	'A'	'Ă'	148	-48	164	-32	LATIN_EX	#	romanian
++	'A'	'ª'	164	-32	180	-16	LATIN_EX	#	romanian
++	'A'	'A'	0	16	20	32	CONTROL	"C+A"
+
+
+=	'S'	'ы'	20	32	40	48	CYRILLIC	0	's'
++	'S'	'Ы'	0	-16	20	0	CYRILLIC
++	'S'	's'	20	0	36	16	LATIN
++	'S'	'S'	20	-16	36	0	LATIN
++	'S'	'ѕ'	36	0	52	16	CYR_EX	#	makedonian
++	'S'	'Ѕ'	36	-16	52	0	CYR_EX	#	makedonian
++	'W'	'ς'	68	0	84	16	GREEK
++	'S'	'σ'	52	0	68	16	GREEK
++	'S'	'Σ'	52	-16	68	0	GREEK
++	'S'	'š'	0	-32	20	-16	LATIN_EX	#	czech
++	'S'	'Š'	0	-48	20	-32	LATIN_EX	#	czech
++	'S'	'ŝ'	20	-32	36	-16	LATIN_EX	#	esperanto
++	'S'	'Ŝ'	20	-48	36	-32	LATIN_EX	#	esperanto
++	'S'	'ś'	36	-32	52	-16	LATIN_EX	#	polish	belarusian/lat
++	'S'	'Ś'	36	-48	52	-32	LATIN_EX	#	polish	belarusian/lat
++	'S'	'ş'	52	-32	68	-16	LATIN_EX	#	polish
++	'S'	'Ş'	52	-48	68	-32	LATIN_EX	#	polish
++	'S'	'ß'	68	-32	84	-16	LATIN_EX	#	german
++	'S'	'S'	0	16	20	32	CONTROL	"C+S"
+
+=	'D'	'в'	40	32	60	48	CYRILLIC	0	'd'
++	'D'	'В'	0	-16	20	0	CYRILLIC
++	'D'	'd'	20	0	36	16	LATIN
++	'D'	'D'	20	-16	36	0	LATIN
++	'D'	'δ'	36	0	52	16	GREEK
++	'D'	'Δ'	36	-16	52	0	GREEK
++	'D'	'∆'	0	-32	20	-16	DIGIT		#	math
++	'D'	'∂'	0	-48	20	-32	DIGIT		#	math
++	'D'	'ď'	20	-32	36	-16	LATIN_EX	#	czech
++	'D'	'Ď'	20	-48	36	-32	LATIN_EX	#	czech
++	'D'	'ð'	36	-32	52	-16	LATIN_EX	#	icelandic
++	'D'	'Ð'	36	-48	52	-32	LATIN_EX	#	icelandic
+#+	'D'	0x01F3	32	-32	48	-16	LATIN_EX	#	dz	croatian
+#+	'D'	0x01F1	32	-48	48	-32	LATIN_EX	#	DZ	croatian
+#+	'D'	0x02A3	48	-32	64	-16	LATIN_EX	#	DZ	croatian	digraph
++	'D'	'D'	0	16	20	32	CONTROL	"C+D"
+
+=	'F'	'а'	60	32	80	48	CYRILLIC	0	'f'
++	'F'	'А'	0	-16	20	0	CYRILLIC
++	'F'	'f'	20	0	36	16	LATIN
++	'F'	'F'	20	-16	36	0	LATIN
+#+	'F'	'ә'	36	0	52	16	CYR_EX	#	kazak	tatar
+#+	'F'	'Ә'	36	-16	52	0	CYR_EX	#	kazak	tatar
++	'F'	'φ'	36	0	52	16	GREEK
++	'F'	'Φ'	36	-16	52	0	GREEK
++	'F'	'ƒ'	0	-32	20	-16	DIGIT
++	'F'	'F'	0	16	20	32	CONTROL	"C+F"
+
+=	'G'	'п'	80	32	100	48	CYRILLIC	0	'g'
++	'G'	'П'	0	-16	20	0	CYRILLIC
++	'G'	'g'	20	0	36	16	LATIN
++	'G'	'G'	20	-16	36	0	LATIN
++	'G'	'γ'	36	0	52	16	GREEK
++	'G'	'Γ'	36	-16	52	0	GREEK
++	'G'	'ğ'	0	-32	20	-16	LATIN_EX	#	turkish
++	'G'	'Ğ'	0	-48	20	-32	LATIN_EX	#	turkish
++	'G'	'ĝ'	20	-32	36	-16	LATIN_EX	#	esperanto
++	'G'	'Ĝ'	20	-48	36	-32	LATIN_EX	#	esperanto
++	'G'	'ģ'	36	-32	52	-16	LATIN_EX	#	latvian
++	'G'	'Ģ'	36	-48	52	-32	LATIN_EX	#	latvian
++	'G'	'ġ'	52	-32	68	-16	LATIN_EX	#	maltese
++	'G'	'Ġ'	52	-48	68	-32	LATIN_EX	#	maltese
++	'G'	'G'	0	16	20	32	CONTROL	"C+G"
+
+=	'H'	'р'	100	32	120	48	CYRILLIC	0	'h'
++	'H'	'Р'	0	-16	20	0	CYRILLIC
++	'H'	'h'	20	0	36	16	LATIN
++	'H'	'H'	20	-16	36	0	LATIN
++	'H'	'η'	36	0	52	16	GREEK
++	'H'	'Η'	36	-16	52	0	GREEK
++	'H'	'ĥ'	0	-32	20	-16	LATIN_EX	#	esperanto
++	'H'	'Ĥ'	0	-48	20	-32	LATIN_EX	#	esperanto
++	'H'	'ħ'	20	-32	36	-16	LATIN_EX	#	maltese
++	'H'	'Ħ'	20	-48	36	-32	LATIN_EX	#	maltese
++	'H'	'H'	0	16	20	32	CONTROL	"C+H"
+
+=	'J'	'о'	120	32	140	48	CYRILLIC	0	'j'
++	'J'	'О'	0	-16	20	0	CYRILLIC
++	'J'	'j'	20	0	36	16	LATIN
++	'J'	'J'	20	-16	36	0	LATIN
+#+	'J'	'ө'	CYR_EX	#	kazak	tatar
+#+	'J'	'Ө'	CYR_EX	#	kazak	tatar
++	'J'	'ј'	36	0	52	16	CYRILLIC
++	'J'	'Ј'	36	-16	52	0	CYRILLIC
++	'J'	'ξ'	52	0	68	16	GREEK
++	'J'	'Ξ'	52	-16	68	0	GREEK
++	'J'	'ĵ'	0	-32	20	-16	LATIN_EX	#	esperanto
++	'J'	'Ĵ'	0	-48	20	-32	LATIN_EX	#	esperanto
++	'J'	'J'	0	16	20	32	CONTROL	"C+J"
+
+=	'K'	'л'	140	32	160	48	CYRILLIC	0	'k'
++	'K'	'Л'	0	-16	20	0	CYRILLIC
++	'K'	'k'	20	0	36	16	LATIN
++	'K'	'K'	20	-16	36	0	LATIN
++	'K'	'љ'	36	0	52	16	CYR_EX	#	serbian
++	'K'	'Љ'	36	-16	52	0	CYR_EX	#	serbian
++	'K'	'κ'	52	0	68	16	GREEK
++	'K'	'Κ'	52	-16	68	0	GREEK
++	'K'	'ķ'	0	-32	20	-16	LATIN_EX	#	latvian
++	'K'	'Ķ'	0	-48	20	-32	LATIN_EX	#	latvian
++	'K'	'K'	0	16	20	32	CONTROL	"C+K"
+
+=	'L'	'д'	160	32	180	48	CYRILLIC	0	'l'
++	'L'	'Д'	0	-16	20	0	CYRILLIC
++	'L'	'l'	20	0	36	16	LATIN
++	'L'	'L'	20	-16	36	0	LATIN
++	'L'	'λ'	36	0	52	16	GREEK
++	'L'	'Λ'	36	-16	52	0	GREEK
++	'L'	'ł'	0	-32	20	-16	LATIN_EX	#	latvian	belarusian/lat
++	'L'	'Ł'	0	-48	20	-32	LATIN_EX	#	latvian	belarusian/lat
++	'L'	'ļ'	20	-32	36	-16	LATIN_EX	#	polish
++	'L'	'Ļ'	20	-48	36	-32	LATIN_EX	#	polish
++	'L'	'L'	0	16	20	32	CONTROL	"C+L"
+
+=	0xBA	'ж'	180	32	200	48	CYRILLIC	0	';'
++	0xBA	'Ж'	0	-16	20	0	CYRILLIC
++	0xBA	';'	20	0	36	16	DIGIT
++	0xBA	':'	20	-16	36	0	DIGIT
+#+	0xBA	'җ'	36	0	52	16	CYR_EX	#	tatar
+#+	0xBA	'Җ'	36	-16	52	0	CYR_EX
++	0xBA	';'	0	16	20	32	CONTROL	"C+;"
+
+
+=	0xDE	'э'	200	32	220	48	CYRILLIC	'"'	'\''
++	0xDE	'Э'	0	-16	20	0	CYRILLIC
++	0xDE	'\''	20	0	36	16	DIGIT
++	0xDE	'"'	20	-16	36	0	DIGIT
++	0xC0	'`'	0	-32	20	-16	DIGIT
++	0xC0	'~'	20	-32	36	-16	DIGIT
++	0xDE	'“'	0	-48	20	-32	DIGIT
++	0xDE	'”'	20	-48	36	-32	DIGIT
++	0xDE	'„'	-16	-48	0	-32	DIGIT
++	0xDE	'\''	0	16	20	32	CONTROL	"C+'"
+
+########################################################################
+
+
+
+########################################################################
+#	vk	data	rect	group	desc	desc2
+#	vk	data	x	y	group	desc
+#=	0x10	0	0	48	32	64	SMALL	"Shift"
+
+=	'Z'	'я'	0	48	20	64	CYRILLIC	0	'z'
++	'Z'	'Я'	0	-16	20	0	CYRILLIC
++	'Z'	'z'	20	0	36	16	LATIN
++	'Z'	'Z'	20	-16	36	0	LATIN
++	'Z'	'ζ'	36	0	52	16	GREEK
++	'Z'	'Ζ'	36	-16	52	0	GREEK
++	'Z'	'ź'	0	-32	20	-16	LATIN_EX	#	polish	belarusian/lat
++	'Z'	'Ź'	0	-48	20	-32	LATIN_EX	#	polish	belarusian/lat
++	'Z'	'ž'	20	-32	36	-16	LATIN_EX	#	czech	croatian	finnish
++	'Z'	'Ž'	20	-48	36	-32	LATIN_EX	#	czech	croatian	finnish
++	'Z'	'ż'	36	-32	52	-16	LATIN_EX	#	polish
++	'Z'	'Ż'	36	-48	52	-32	LATIN_EX	#	polish
++	'Z'	'ż'	36	-32	52	-16	LATIN_EX	#	maltese
++	'Z'	'Ż'	36	-48	52	-32	LATIN_EX	#	maltese
++	'Z'	'Z'	0	16	20	32	CONTROL	"C+Z"
+
+=	'X'	'ч'	20	48	40	64	CYRILLIC	0	'x'
++	'X'	'Ч'	0	-16	20	0	CYRILLIC
++	'X'	'x'	20	0	36	16	LATIN
++	'X'	'X'	20	-16	36	0	LATIN
++	'X'	'ћ'	36	0	52	16	CYR_EX
++	'X'	'Ћ'	36	-16	52	0	CYR_EX
++	'X'	'ђ'	52	0	68	16	CYR_EX
++	'X'	'Ђ'	52	-16	68	0	CYR_EX
++	'X'	'χ'	68	0	84	16	GREEK
++	'X'	'Χ'	68	-16	84	0	GREEK
++	'X'	'X'	0	16	20	32	CONTROL	"C+X"
+
+=	'C'	'с'	40	48	60	64	CYRILLIC	0	'c'
++	'C'	'С'	0	-16	20	0	CYRILLIC
++	'C'	'c'	20	0	36	16	LATIN
++	'C'	'C'	20	-16	36	0	LATIN
++	'C'	'ψ'	36	0	52	16	GREEK
++	'C'	'Ψ'	36	-16	52	0	GREEK
++	'C'	'©'	0	-32	20	-16	DIGIT	#
++	'C'	'č'	20	-32	36	-16	LATIN_EX	#	czech	croatian
++	'C'	'Č'	20	-48	36	-32	LATIN_EX	#	czech	croatian
++	'C'	'ĉ'	36	-32	52	-16	LATIN_EX	#	esperanto
++	'C'	'Ĉ'	36	-48	52	-32	LATIN_EX	#	esperanto
++	'C'	'ć'	52	-32	68	-16	LATIN_EX	#	polish	croatian	belarusian/lat
++	'C'	'Ć'	52	-48	68	-32	LATIN_EX	#	polish	croatian	belarusian/lat
++	'C'	'ç'	68	-32	84	-16	LATIN_EX	#	french	portugese
++	'C'	'Ç'	68	-48	84	-32	LATIN_EX	#	french	portugese
++	'C'	'ċ'	84	-32	100	-16	LATIN_EX	#	maltese
++	'C'	'Ċ'	84	-48	100	-32	LATIN_EX	#	maltese
++	'C'	'C'	0	16	20	32	CONTROL	"C+C"
+
+=	'V'	'м'	60	48	80	64	CYRILLIC	0	'v'
++	'V'	'М'	0	-16	20	0	CYRILLIC
++	'V'	'v'	20	0	36	16	LATIN
++	'V'	'V'	20	-16	36	0	LATIN
++	'V'	'ω'	36	0	52	16	GREEK
++	'V'	'Ω'	36	-16	52	0	GREEK
++	'V'	'V'	0	16	20	32	CONTROL	"C+V"
+
+=	'B'	'и'	80	48	100	64	CYRILLIC	0	'b'
++	'B'	'И'	0	-16	20	0	CYRILLIC
++	'B'	'b'	20	0	36	16	LATIN
++	'B'	'B'	20	-16	36	0	LATIN
++	'B'	'β'	36	0	52	16	GREEK
++	'B'	'Β'	36	-16	52	0	GREEK
++	'B'	'B'	0	16	20	32	CONTROL	"C+B"
+
+=	'N'	'т'	100	48	120	64	CYRILLIC	0	'n'
++	'N'	'Т'	0	-16	20	0	CYRILLIC
++	'N'	'n'	20	0	36	16	LATIN
++	'N'	'N'	20	-16	36	0	LATIN
++	'N'	'ν'	36	0	52	16	GREEK
++	'N'	'Ν'	36	-16	52	0	GREEK
++	'N'	'ⁿ'	0	-32	20	-16	DIGIT		# 	math
++	'N'	'ñ'	20	-32	36	-16	LATIN_EX	#	spanish
++	'N'	'Ñ'	20	-48	36	-32	LATIN_EX	#	spanish
++	'N'	'ŋ'	36	-32	52	-16	LATIN_EX	#	transcript?
++	'N'	'Ŋ'	36	-48	52	-32	LATIN_EX	#	transcript?
++	'N'	'ń'	52	-32	68	-16	LATIN_EX	#	polish	belarusian/lat
++	'N'	'Ń'	52	-48	68	-32	LATIN_EX	#	polish	belarusian/lat
++	'N'	'ņ'	68	-32	84	-16	LATIN_EX	#	latvian
++	'N'	'Ņ'	68	-48	84	-32	LATIN_EX	#	latvian
++	'N'	'N'	0	16	20	32	CONTROL	"C+N"
+
+=	'M'	'ь'	120	48	140	64	CYRILLIC	0	'm'
++	'M'	'Ь'	0	-16	20	0	CYRILLIC
++	'M'	'm'	20	0	36	16	LATIN
++	'M'	'M'	20	-16	36	0	LATIN
++	'M'	'μ'	36	0	52	16	GREEK
++	'M'	'Μ'	36	-16	52	0	GREEK
++	'M'	'µ'	0	-32	20	-16	DIGIT		#	math, microsign
++	'M'	'M'	0	16	20	32	CONTROL	"C+M"
+
+=	0xBC	'б'	140	48	160	64	CYRILLIC	'<'	','
++	0xBC	'Б'	0	-16	20	0	CYRILLIC
++	0xBC	','	20	0	36	16	DIGIT
++	0xBC	'<'	20	-16	36	0	DIGIT
++	0xBC	'«'	0	-32	20	-16	DIGIT
++	0xBC	'≤'	0	-48	20	-32	DIGIT
++	0xBC	','	0	16	20	32	CONTROL	"C+,"
+
+=	0xBE	'ю'	160	48	180	64	CYRILLIC	'>'	'.'
++	0xBE	'Ю'	0	-16	20	0	CYRILLIC
++	0xBE	'.'	20	0	36	16	DIGIT
++	0xBE	'>'	20	-16	36	0	DIGIT
++	0xBE	'»'	0	-32	20	-16	DIGIT
++	0xBE	'≥'	0	-48	20	-32	DIGIT
++	0xBE	'…'	20	-32	36	-16	DIGIT
++	0xBE	'.'	0	16	20	32	CONTROL	"C+."
+
+=	0xBF	'/'	180	48	200	64	DIGIT	'?'
++	0xDC	'\\'	20	0	36	16	DIGIT
++	0xBF	'?'	0	-16	20	0	DIGIT
++	0xDC	'|'	20	-16	36	0	DIGIT
++	0xBF	'¿'	0	-32	20	-16	DIGIT
++	0xBF	'÷'	20	-32	36	-16	DIGIT
++	0xBF	'/'	0	16	20	32	CONTROL	"C+/"
++	0xDC	'\\'	20	16	36	32	CONTROL	"C+\\"
+
+#=	0x24	0	192	48	208	64	SMALL	"Hm"
+
+=	0x26	0	200	48	220	64	SMALL	'↑'
++	0x21	0	0	-16	20	0	SMALL	"PgUp"
++	0x26	0	-32	0	0	16	SHIFT	"S+Up"
+#+	0x21	0	-32	-16	0	0	SHIFT	"S+PgUp"
++	0x26	0	-64	0	-32	16	CONTROL	"C+Up"
+#+	0x21	0	-64	-16	-32	0	CONTROL	"C+PgUp"
+
+#=	0x23	0	224	48	240	64	SMALL	"End"
+########################################################################
+
+
+########################################################################
+#	vk	data	rect	group	desc	desc2
+#	vk	data	x	y	group	desc
+=	0xFE	0	0	64	32	80	SMALL	" "
+
+
+=	0x20	0x20	32	64	180	80	DIGIT	0
++	0x20	0x20	-32	0	0	16	CONTROL	"C+space"
++	0xFA	"%d:%m:%Y"	0	-16	148	0	SMALL
++	0xF9	"%H:%M:%S"	0	-32	148	-16	SMALL
++	0xFD	0		0	-48	148	-32	SMALL
+#+	0xFC	0		0	-64	148	-48	SMALL
+#+	0xFB	0		0	-80	148	-64	SMALL
++	0x20	0x20	-32	0	0	16	CONTROL	"C+space"
+
+#=	0x12	0	151	64	172	80	SMALL	"Alt"
+#=	0x11	0	172	64	192	80	SMALL	"Ctrl"
+
+=	0x25	0	180	64	200	80	SMALL	'←'
++	0x24	0	0	-16	20	0	SMALL	"Home"
++	0x25	0	-32	0	0	16	SHIFT	"S+Left"
++	0x24	0	-32	-16	0	0	SHIFT	"S+Home"
++	0x25	0	-64	0	-32	16	CONTROL	"C+Left"
+#+	0x24	0	-64	-16	-32	0	CONTROL	"C+Home"
+
+=	0x28	0	200	64	220	80	SMALL	'↓'
++	0x22	0	0	-16	20	0	SMALL	"PgDn"
++	0x28	0	-32	0	0	16	SHIFT	"S+Down"
+#+	0x22	0	-32	-16	0	0	SHIFT	"S+PgDn"
++	0x28	0	-64	0	-32	16	CONTROL	"C+Down"
+#+	0x22	0	-64	-16	-32	0	CONTROL	"C+PgDn"
+
+=	0x27	0	220	64	240	80	SMALL	'→'
++	0x23	0	0	-16	20	0	SMALL	"End"
++	0x27	0	-32	0	0	16	SHIFT	"S+Right"
++	0x23	0	-32	-16	0	0	SHIFT	"S+End"
++	0x27	0	-64	0	-32	16	CONTROL	"C+Right"
+#+	0x23	0	-64	-16	-32	0	CONTROL	"C+End"
+#	vk	data	rect	group	desc	desc2
+########################################################################

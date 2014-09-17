@@ -1,0 +1,4 @@
+ErrorLevel ("off")
+Path=SystemPath("ScriptPath")
+ Delete(Path&"\..\..\..\LadaTools\Skin\ScreenSaver\saver.bmp") 
+Exit

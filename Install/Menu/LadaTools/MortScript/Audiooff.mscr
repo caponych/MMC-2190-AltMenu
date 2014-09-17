@@ -1,0 +1,8 @@
+ErrorLevel ("off")
+Close("Nitrogen")
+Sleep(1000)
+Kill("audio.exe")
+Kill("LadaSound.exe")
+Kill("LPlayer.exe")
+Kill("NaviPlayer.exe")
+Exit

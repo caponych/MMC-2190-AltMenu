@@ -1,0 +1,4 @@
+ErrorLevel ("off")
+Path=SystemPath("ScriptPath")
+Run(Path&"\..\exit.ahk")
+exit

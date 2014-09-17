@@ -1,0 +1,5 @@
+ErrorLevel ("off")
+Path=SystemPath("ScriptPath")
+Kill("AutohotkeyCE.exe")
+Run(Path&"\..\MMCCore.ahk")
+Exit

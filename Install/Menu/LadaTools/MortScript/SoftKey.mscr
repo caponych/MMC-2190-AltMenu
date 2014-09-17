@@ -1,0 +1,8 @@
+ErrorLevel ("off")
+If (WndExists("SoftKey"))
+close("SoftKey")
+else
+Path=SystemPath("ScriptPath")
+Run(Path&"\..\SoftKey.ahk")
+endif
+exit

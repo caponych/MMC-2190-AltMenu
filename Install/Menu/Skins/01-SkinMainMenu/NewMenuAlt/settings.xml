@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!--NewMenu for LadaKalina/Priora/Granta-->
+<root>
+    <MainScreen>
+        <IconWidth>150</IconWidth>
+        <IconsPerRow>3</IconsPerRow>
+        <MinHorizontalSpace>0</MinHorizontalSpace>
+        <AdditionalVerticalSpace>20</AdditionalVerticalSpace>
+        <Offset left="20" top="50" right="20" bottom="80" />
+        <Font facename="" size="21" color="#969696" weight="0" offset="0" offsetH="0" align="1" shadow="1" roundrect="0" />
+        <Background gradient="1" color1="#0" color2="#292929" image="Icons\BCKGR.jpg" alphablend="0" fitwidth="0" fitheight="0" center="0" tile="0" />
+    </MainScreen>
+    <BottomBar>
+        <IconWidth>60</IconWidth>
+        <IconsPerRow>0</IconsPerRow>
+        <MinHorizontalSpace>0</MinHorizontalSpace>
+        <AdditionalVerticalSpace>0</AdditionalVerticalSpace>
+        <ShrinkToFit>0</ShrinkToFit>
+        <Offset left="0" top="0" right="0" bottom="-20" />
+        <Font facename="" size="0" color="#0" weight="0" offset="0" offsetH="0" align="1" shadow="0" roundrect="0" />
+        <Background gradient="1" color1="#292929" color2="#0" image="" alphablend="0" fitwidth="0" fitheight="0" center="0" tile="0" />
+    </BottomBar>
+    <TopBar>
+        <IconWidth>96</IconWidth>
+        <IconsPerRow>0</IconsPerRow>
+        <MinHorizontalSpace>0</MinHorizontalSpace>
+        <AdditionalVerticalSpace>0</AdditionalVerticalSpace>
+        <ShrinkToFit>0</ShrinkToFit>
+        <Offset left="0" top="0" right="0" bottom="0" />
+        <Font facename="" size="22" color="#FFFFFF" weight="400" offset="0" offsetH="0" align="1" shadow="1" roundrect="0" />
+        <Background gradient="0" color1="#0" color2="#0" image="" alphablend="0" fitwidth="1" fitheight="1" center="1" tile="0" />
+    </TopBar>
+    <Circles diameter="160" diameterActivePerc="0" roundedPerc="0" distance="0" offset="-228" alignTop="0" colorActive="#FFB4" colorInactive="#201D1F" colorOuter="#201D1F" singletap="1" doubletap="1" />
+    <Header facename="" size="0" color="0" weight="0" offset="0" shadow="0" roundrect="0" />
+    <Background transparent="1" color="#0" static="0" fitwidth="0" fitheight="0" center="0" tile="0" factor="1.000" wallpaper="" />
+    <Movement MoveThreshold="50" MaxVelocity="150" MinVelocity="3" RefreshTime="15" FactorMov="3" VerticalScroll="0" FreestyleScroll="0" />
+	<DayOfMonth facename="Tahoma" color="#c0c0c0" width="21" height="24" weight="0" left="-460" top="0" right="260" bottom="0" />
+    <DayOfWeek facename="Tahoma" color="#c0c0c0" width="21" height="24" weight="0" left="-150" top="-50" right="-150" bottom="0" UseLocale="0" Sunday="ВОСКРЕСЕНЬЕ" Monday="ПОНЕДЕЛЬНИК" Tuesday="ВТОРНИК" Wednesday="СРЕДА" Thursday="ЧЕТВЕРГ" Friday="ПЯТНИЦА" Saturday="СУББОТА" />
+    <Clock facename="Tahoma" color="#C8C8C8" width="30" height="70" weight="0" left="-465" top="-30" right="265" bottom="0" ShowAMPM="0" format12="0" />
+    <Alarm facename="" color="#E6E6E6" width="10" height="28" weight="400" left="0" top="70" right="0" bottom="0" ShowAMPM="1" />
+    <Battery facename="" color="#E6E6E6" width="0" height="35" weight="400" left="0" top="7" right="0" bottom="70" AC="0" ShowPercentage="1" ChargingSymbol="." />
+    <Volume facename="" color="#E6E6E6" width="0" height="35" weight="400" left="0" top="7" right="0" bottom="70" ShowPercentage="1" />
+    <MemoryLoad facename="" color="#E6E6E6" width="0" height="35" weight="400" left="0" top="7" right="0" bottom="70" ShowPercentage="1" />
+    <MemoryFree facename="" color="#E6E6E6" width="0" height="35" weight="400" left="0" top="7" right="0" bottom="70" ShowMB="0" OSUsedKB="0" />
+    <MemoryUsed facename="" color="#E6E6E6" width="0" height="35" weight="400" left="0" top="7" right="0" bottom="70" ShowMB="0" />
+    <PhoneSignalStrength facename="" color="#E6E6E6" width="0" height="35" weight="400" left="0" top="7" right="0" bottom="70" ShowPercentage="1" />
+    <WifiSignalStrength facename="" color="#E6E6E6" width="0" height="28" weight="400" left="0" top="7" right="0" bottom="70" ShowdBm="1" />
+    <BubbleNotif image="" x="55" y="-10" width="63" height="63">
+        <Text facename="" color="#FFFFFF" width="0" height="25" weight="700" left="0" top="0" right="0" bottom="0" />
+    </BubbleNotif>
+    <BubbleAlarm image="" x="55" y="-10" width="63" height="63" />
+    <BubbleState image="" x="70" y="70" width="30" height="30" />
+    <Animation effect="4" color="#0" duration="200" delay="100" LaunchAppAtBeginningOfAnimation="1" />
+    <OnLaunchIcon close="0" minimize="0" vibrate="0" sound="" RunTool="" />
+    <OnPressIcon icon="" sound="" />
+    <OnChangeScreen sound="" />
+    <NotifyTimer UpdateWhenInactive="0">2000</NotifyTimer>
+    <IgnoreRotation>1</IgnoreRotation>
+    <IgnoreMinimize>1</IgnoreMinimize>
+    <DisableRightClick>1</DisableRightClick>
+    <DisableRightClickDots>1</DisableRightClickDots>
+    <Fullscreen>1</Fullscreen>
+    <NeverShowTaskBar>1</NeverShowTaskBar>
+    <NoWindowTitle>1</NoWindowTitle>
+    <ShowExit>0</ShowExit>
+    <TextQuality>0</TextQuality>
+    <TextQualityInIcons>0</TextQualityInIcons>
+    <AutoShowKeyboardOnTextboxFocus>1</AutoShowKeyboardOnTextboxFocus>
+    <Sounds>0</Sounds>
+    <OutOfScreenLeft stop="0" stopAt="40" wrap="0" exec="" />
+    <OutOfScreenRight stop="0" stopAt="40" wrap="0" exec="" />
+    <OutOfScreenUp stop="0" stopAt="40" wrap="0" exec="" />
+    <OutOfScreenDown stop="0" stopAt="40" wrap="0" exec="" />
+    <Transparency alphablend="2" alphaonblack="0" threshold="0" transparentbmp="0" mask="0" />
+    <TodayItemHeight portrait="0" landscape="0" />
+    <LastConfiguredAt width="480" height="800" />
+</root>

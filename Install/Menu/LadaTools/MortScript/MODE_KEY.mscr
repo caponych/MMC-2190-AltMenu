@@ -1,0 +1,10 @@
+ErrorLevel ("off")
+If (ProcExists("Button.exe"))
+	MouseClick(0,0)
+else
+	Path=SystemPath("ScriptPath")
+	Run(Path&"\..\Tools\Button\Button.exe")
+	Sleep(1000)
+	MouseClick(0,0)
+endif
+exit

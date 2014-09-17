@@ -1,0 +1,7 @@
+Path=SystemPath("ScriptPath")
+If (FileExists(Path&"\..\Menu\NewMenu.exe"))
+Kill("explorer.exe")
+Run(Path&"\..\Menu\LadaTools\MMCCore.ahk")
+Run(Path&"\..\Menu\NewMenu.exe")
+EndIf
+Exit

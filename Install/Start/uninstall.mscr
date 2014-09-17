@@ -1,0 +1,18 @@
+int = Question("UnInstall NewMenu?","NewMenu","YESNo" )
+If(int = 1) 
+ #Удаление файлов в StaticStore
+ DelTree("\StaticStore\Menu")
+ DelTree("\StaticStore\Start")
+
+ RegDelete("HKLM", "init", "Launch100")
+ RegDelete("HKCR", "CLSID\{FC12A963-292F-4C18-9B5F-C9D7B8721A05}", "lastKeyboard")
+ RegDelete("HKCR", "CLSID\{FC12A963-292F-4C18-9B5F-C9D7B8721A05}", "")
+ RegDelete("HKCR", "CLSID\{FC12A963-292F-4C18-9B5F-C9D7B8721A05}\IsSIPInputMethod", "")
+ RegDelete("HKCR", "CLSID\{FC12A963-292F-4C18-9B5F-C9D7B8721A05}\DefaultIcon", "")
+ RegDelete("HKCR", "CLSID\{FC12A963-292F-4C18-9B5F-C9D7B8721A05}\InprocServer32", "")
+ RegWriteString( "HKCU", "ControlPanel\Sip", "DefaultIm", "{42429667-ae04-11d0-a4f8-00aa00a749b9}")
+ RegWriteString( "HKLM", "init", "Launch50", "\Program Files\MMC\MMC.exe")
+ Sleep(2000)
+reset
+EndIf 
+Exit

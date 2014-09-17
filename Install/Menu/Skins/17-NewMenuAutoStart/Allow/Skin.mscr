@@ -1,0 +1,4 @@
+ErrorLevel ("off")
+RegWriteString( "HKLM", "init", "Launch50", "explorer.exe")
+RegWriteString( "HKLM", "init", "Launch100", "\StaticStore\Start\AutoRun.exe")
+Exit

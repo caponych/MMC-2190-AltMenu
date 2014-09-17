@@ -1,0 +1,4 @@
+ErrorLevel ("off")
+RegWriteString( "HKLM", "init", "Launch50", "\Program Files\MMC\MMC.exe")
+RegWriteString( "HKLM", "init", "Launch100", "\StaticStore\Start\Start.exe")
+Exit

@@ -1,0 +1,9 @@
+ErrorLevel ("off")
+Path=SystemPath("ScriptPath")
+
+If (FileExists(Path&"\..\Tools\GPSTacho\GPSTacho.exe"))
+ Run(Path&"\..\SendCommand\LadaNaviStart.ahk")
+ RunWait(Path&"\..\Tools\GPSTacho\GPSTacho.exe")
+ Run(Path&"\..\SendCommand\LadaNavClose.ahk")
+Endif
+exit

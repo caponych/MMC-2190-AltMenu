@@ -1,0 +1,5 @@
+ErrorLevel ("off")
+Path=SystemPath("ScriptPath")
+ XCopy(Path&"\*.*",Path&"\..\..\..\LadaTools\LadaMedia\Media\Filters",True,True)
+ Delete(Path&"\..\..\..\ LadaTools\LadaMedia\Media\Filters\Skin.mscr") 
+Exit

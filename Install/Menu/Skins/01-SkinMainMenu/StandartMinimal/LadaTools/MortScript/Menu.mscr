@@ -1,0 +1,5 @@
+ErrorLevel ("off")
+Path=SystemPath("ScriptPath")
+Kill("NewMenu.exe")
+Run(Path&"\..\..\NewMenu.exe")
+exit

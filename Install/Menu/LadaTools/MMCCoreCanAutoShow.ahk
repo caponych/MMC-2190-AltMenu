@@ -1,0 +1,1 @@
+CanAutoShowAllow=1

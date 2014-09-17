@@ -1,0 +1,9 @@
+ErrorLevel ("off")
+Path=SystemPath("ScriptPath")
+Close("Nitrogen")
+Kill("LadaSound.exe")
+Kill("LPlayer.exe")
+Kill("NaviPlayer.exe")
+RunWait(Path&"\..\LadaMedia\Media\Media.exe")
+Run(Path&"\..\SendCommand\LadaMediaClose.ahk")
+Exit

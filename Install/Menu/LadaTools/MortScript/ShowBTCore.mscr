@@ -1,0 +1,8 @@
+ErrorLevel ("off")
+	If (ProcExists("BTCore.exe"))
+	SendCommand("BTCore","1007")
+else
+	Run("\Program Files\MMC\BTCore.exe")
+	SendCommand("BTCore","1007")
+endif
+exit

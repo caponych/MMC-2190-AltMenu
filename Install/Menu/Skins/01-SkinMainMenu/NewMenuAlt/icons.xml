@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!--NewMenu for LadaKalina/Priora/Granta-->
+<root>
+    <screen header="Main">
+        <icon name="Навигация" image="Icons\navi.png" exec="--goto:1" animation="0" />
+        <icon name="Медиа" image="Icons\media.png" exec="--goto:2" animation="0" />
+        <icon name="Офис" image="Icons\office.png" exec="--goto:3" animation="0" />
+        <icon name="Инструменты" image="Icons\tools.png" exec="--goto:5" animation="0" />
+        <icon name="Настройки" image="Icons\settings.png" exec="--goto:4" animation="0" />
+        <icon name="Выход" image="Icons\power.png" exec="\StaticStore\Menu\LadaTools\Exit.ahk" animation="0" />
+    </screen>
+    <screen header="Navi">
+        <icon name="Назад" image="Icons\SHome.png" exec="--goto:0" animation="0" />
+        <icon name="Навител" image="Icons\navitel.png" exec="\StaticStore\Menu\LadaTools\MortScript\navitel.mscr" animation="1" />
+        <icon name="Яндекс навигатор" image="Icons\ymaps.png" exec="\StaticStore\Menu\LadaTools\MortScript\yamaps.mscr" animation="1" />
+        <icon name="7дорог" image="Icons\7way.png" exec="\StaticStore\Menu\LadaTools\MortScript\7way.mscr" animation="1" />
+        <icon name="СитиГид" image="Icons\CityGuide.png" exec="\StaticStore\Menu\LadaTools\MortScript\CityGuide.mscr" animation="1" />
+        <icon name="ПроГород" image="Icons\progorod.png" exec="\StaticStore\Menu\LadaTools\MortScript\progorod.mscr" animation="1" />
+    </screen>
+    <screen header="Media">
+        <icon name="Назад" image="Icons\SHome.png" exec="--goto:0" animation="0" />
+        <icon name="Аудио" image="Icons\audio.png" exec="\StaticStore\Menu\LadaTools\MortScript\audio.mscr" animation="1" />
+        <icon name="Видео" image="Icons\video.png" exec="\StaticStore\Menu\LadaTools\SendCommand\media.ahk" animation="1" />
+        <icon name="Радио" image="Icons\radio.png" exec="\StaticStore\Menu\LadaTools\SendCommand\LadaRadio.ahk" animation="1" />
+        <icon name="Лада плеер" image="Icons\LadaPlayer.png" exec="\StaticStore\Menu\LadaTools\MortScript\ladaplayer.mscr" animation="1" />
+        <icon name="Нави плеер" image="Icons\NaviPlayer.png" exec="\StaticStore\Menu\LadaTools\MortScript\naviplayer.mscr" animation="1" />
+    </screen>
+    <screen header="Office">
+        <icon name="Назад" image="Icons\SHome.png" exec="--goto:0" animation="0" />
+        <icon name="AllReader" image="Icons\allreader.png" exec="\StaticStore\Menu\LadaTools\Tools\AlReader\AlReader2.exe" animation="1" />
+        <icon name="Foxit PDF Reader" image="Icons\foxit.png" exec="\StaticStore\Menu\LadaTools\Tools\FoxitReader.exe" animation="1" />
+        <icon name="Opera" image="Icons\opera.png" exec="\StaticStore\Menu\LadaTools\MortScript\OperaRun.mscr" animation="1" />
+        <icon name="Калькулятор" image="Icons\calc.png" exec="\StaticStore\Menu\LadaTools\Tools\CalcCE.EXE" animation="0" />
+        <icon name="Клавиатура" image="Icons\keyboard.png" exec="\StaticStore\Menu\LadaTools\Tools\ToggleInputPanel.exe" animation="0" />
+    </screen>
+    <screen header="Settings">
+        <icon name="Назад" image="Icons\SHome.png" exec="--goto:0" animation="0" />
+        <icon name="Настройки звука" image="Icons\SSound.png" exec="\StaticStore\Menu\LadaTools\SendCommand\LadaSoundSettings.ahk" animation="1" />
+        <icon name="Настройки экрана" image="Icons\SScreen.png" exec="\StaticStore\Menu\LadaTools\SendCommand\LadaVideoSettings.ahk" animation="1" />
+        <icon name="Парковочная камера" image="Icons\SCam.png" exec="\StaticStore\Menu\LadaTools\SendCommand\LadaRearViewCam.ahk" animation="0" />
+        <icon name="Настройки NewMenu" image="Icons\SScin.png" exec="\StaticStore\Menu\LadaTools\SkinChanger.ahk" animation="0" />
+        <icon name="GPRS соединение" image="Icons\GPRS.png" exec="\StaticStore\Menu\LadaTools\Tools\GPRS\GPRS.exe" animation="0" />
+    </screen>
+    <screen header="Tools">
+        <icon name="Назад" image="Icons\SHome.png" exec="--goto:0" animation="0" />
+        <icon name="OBDII коды" image="Icons\OBDII.png" exec="\StaticStore\Menu\LadaTools\Tools\OBDII_Code\obdII.ahk" animation="0" />
+        <icon name="Температура" image="Icons\temperature.png" exec="\StaticStore\Menu\LadaTools\SendCommand\Info.ahk" animation="0" />
+        <icon name="Диспетчер файлов" image="Icons\Explorer.png" exec="\StaticStore\Menu\LadaTools\Tools\CECMD.exe" animation="0" />
+        <icon name="Диспетчер задач" image="Icons\taskmanager.png" exec="\StaticStore\Menu\LadaTools\Tools\LadaTaskMgr.exe" animation="0" />
+        <icon name="Редактор реестра" image="Icons\regedit.png" exec="\StaticStore\Menu\LadaTools\Tools\TRE.exe" animation="0" />
+    </screen>
+    <BottomBar>
+        <icon type="7" animation="0" />
+        <icon image="-" type="7" typeParams="dd/MM/yyyy" exec="\StaticStore\Menu\LadaTools\SendCommand\SaverStart.ahk" animation="0" />
+        <icon type="12" animation="0" />
+    </BottomBar>
+</root>

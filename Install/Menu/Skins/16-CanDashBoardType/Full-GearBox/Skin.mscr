@@ -1,0 +1,10 @@
+ErrorLevel ("off")
+ close("MMCCore")
+ Sleep(1000)
+ Kill("AutohotkeyCE.exe")
+ Path=SystemPath("ScriptPath")
+ XCopy(Path&"\*.*",Path&"\..\..\..",True,True)
+ Sleep(1000)
+ Delete(Path&"\..\..\..\Skin.mscr") 
+ Run(Path&"\..\..\..\LadaTools\MMCCore.ahk")
+Exit

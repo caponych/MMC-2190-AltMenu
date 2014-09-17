@@ -1,0 +1,27 @@
+ErrorLevel ("off")
+Path=SystemPath("ScriptPath")
+NaviProg="Navi\Navitel\Navitel.exe"
+
+If (FileExists(Path&"\..\..\..\"&NaviProg))
+ NaviPath=Path&"\..\..\..\"&NaviProg
+Endif
+
+If (FileExists("\SDMMC\"&NaviProg))
+ NaviPath="\SDMMC\"&NaviProg
+Endif
+
+If (FileExists("\USB Disk\"&NaviProg))
+ NaviPath="\USB Disk\"&NaviProg
+Endif
+
+ If (not FileExists(NaviPath))
+ SleepMessage (5,"This navigation program must be in one of these locations: ^NL^USB Disk\"&NaviProg&" or SDMMC\"&NaviProg,"Info")
+ exit
+ endif
+
+If (FileExists(NaviPath))
+ Run(Path&"\..\SendCommand\LadaNaviStart.ahk")
+ RunWait(NaviPath)
+ Run(Path&"\..\SendCommand\LadaNavClose.ahk")
+Endif
+exit

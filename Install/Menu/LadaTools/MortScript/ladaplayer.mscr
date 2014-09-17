@@ -1,0 +1,8 @@
+ErrorLevel ("off")
+Path=SystemPath("ScriptPath")
+Kill("media.exe")
+Close("Nitrogen")
+Kill("NaviPlayer.exe")
+Run(Path&"\..\SendCommand\RadioOff.ahk")
+Run(Path&"\..\LadaMedia\LadaPlayer\LPlayer.exe")
+Exit
