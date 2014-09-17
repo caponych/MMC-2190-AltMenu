@@ -1,0 +1,56 @@
+ErrorLevel ("off")
+
+int = Question("UpDate NewMenu?","NewMenu","YESNo" )
+
+If(int = 0) 
+		Exit
+endif
+
+If(int = 1) 
+RegWriteString( "HKLM", "init", "Launch50", "\Program Files\MMC\MMC.exe")
+RegWriteString( "HKLM", "init", "Launch100", "\StaticStore\Start\Start.exe")
+
+#закрываем все что можно (для автообновления)
+close("MMCCore")
+Sleep(500)
+Close("Nitrogen")
+Kill("LadaSound.exe")
+Kill("NaviPlayer.exe")
+Kill("media.exe")
+Kill("NewMenu.exe")
+Kill("Button.exe")
+Kill("TempFuel.exe")
+Sleep(500)
+Kill("AutohotkeyCE.exe")
+Kill("MMC.exe")
+Kill("explorer.exe")
+
+Path=SystemPath("ScriptPath")
+ 
+Copy("\StaticStore\book.bk", Path&"\book.bk",True)
+Copy("\StaticStore\BTEnv.txt", Path&"\BTEnv.txt",True)
+Copy("\StaticStore\mmc.ini", Path&"\mmc.ini",True)
+Delete("StaticStore\Menu\LadaTools\INI\NewMenuVersion.ini")
+XCopy("\StaticStore\Menu\LadaTools\INI\*.*",Path&"\Menu\LadaTools\INI",True,True)
+XCopy("\StaticStore\Menu\LadaTools\Skin\Radio\Stations\*.*",Path&"\Menu\LadaTools\Skin\Radio\Stations",True,True)
+Copy("\StaticStore\Menu\LadaTools\LadaMedia\Audio\playlist.npl", Path&"\Menu\LadaTools\LadaMedia\Audio\playlist.npl",True)
+Copy("\StaticStore\Menu\LadaTools\LadaMedia\Audio\config.dat", Path&"\Menu\LadaTools\LadaMedia\Audio\config.dat",True)
+Copy("\StaticStore\Menu\LadaTools\LadaMedia\Audio\preset.eql", Path&"\Menu\LadaTools\LadaMedia\Audio\preset.eql",True)
+Copy("\StaticStore\Menu\LadaTools\LadaMedia\LadaPlayer\LadaSound.pls", Path&"\Menu\LadaTools\LadaMedia\LadaPlayer\LadaSound.pls",True)
+Copy("\StaticStore\Menu\LadaTools\Tools\GPRS\GPRS.ini", Path&"\Menu\LadaTools\Tools\GPRS\GPRS.ini",True)
+DelTree("\StaticStore\*.*")
+
+ #Копирование файлов в StaticStore
+ XCopy(Path&"\*.*","\StaticStore",True,True)
+ Delete("StaticStore\Install.mscr")
+ Delete("StaticStore\MortScript.exe")
+ Delete("StaticStore\Install.exe")
+ Delete("StaticStore\UpDate.exe")
+ Delete("StaticStore\UpDate.mscr")
+ 
+ SleepMessage (5,'System will reset in 5 seconds','INFO')
+ reset
+
+EndIf 
+
+Exit
