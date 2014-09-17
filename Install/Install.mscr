@@ -1,0 +1,131 @@
+ErrorLevel ("off")
+RegWriteString( "HKLM", "init", "Launch50", "\Program Files\MMC\MMC.exe")
+If (FileExists("\SDMMC\NK.bin"))
+Delete("\SDMMC\NK.bin")
+Delete("\SDMMC\TINYNK.bin")
+Delete("\SDMMC\Chain.bin")
+Delete("\SDMMC\Chain.lst")
+Run("\SDMMC\Install\Menu\LadaTools\Tools\Touch\touch.exe")
+Endif
+
+#закрываем все что можно (для автообновления)
+close("MMCCore")
+Sleep(500)
+Close("Nitrogen")
+Kill("LadaSound.exe")
+Kill("NaviPlayer.exe")
+Kill("media.exe")
+Kill("NewMenu.exe")
+Kill("Button.exe")
+Kill("TempFuel.exe")
+Sleep(500)
+Kill("AutohotkeyCE.exe")
+Kill("MMC.exe")
+
+int = Question("Install NewMenu?","NewMenu","YESNo" )
+
+If(int = 0) 
+		SleepMessage (5,'System will reset in 5 seconds','INFO')
+		reset
+endif
+
+If(int = 1) 
+ #Автозапуск
+ RegWriteString( "HKLM", "init", "Launch100", "\StaticStore\Start\Start.exe")
+ 
+ #панель задачь поверх всех окон
+ RegWriteDWord("HKLM","SOFTWARE\Microsoft\Shell\OnTop","","0")
+
+ #Замена кодовой страницы
+ RegWriteDWord("HKLM","nls","DefaultOCP",866)
+ RegWriteDWord("HKLM","nls","DefaultACP",1251)
+ RegWriteDWord("HKLM","nls","DefaultLCID",1049)
+ RegWriteDWord("HKLM","nls","ExtraCurrency",8364)
+ RegWriteDWord("HKLM","nls\overrides","LCID",1049)
+ RegWriteDWord("HKLM","MUI","SysLang",1049)
+ RegWriteDWord("HKLM","MUI","Enable",1)
+ RegWriteDWord("HKCU","MUI","CurLang",1049)
+ RegWriteDWord("HKLM","Software\Microsoft\International","ACP",1251)
+ RegWriteDWord("HKLM","Software\Microsoft\International","LCID",1049)
+ 
+ # Установка наэкранной клавиатуры.
+ RegWriteString("HKCR", "CLSID\{FC12A963-292F-4C18-9B5F-C9D7B8721A05}", "lastKeyboard", "lat")
+ RegWriteString("HKCR", "CLSID\{FC12A963-292F-4C18-9B5F-C9D7B8721A05}", "", "EuroKeyboard")
+ RegWriteString("HKCR", "CLSID\{FC12A963-292F-4C18-9B5F-C9D7B8721A05}\IsSIPInputMethod", "", "1")
+ RegWriteString("HKCR", "CLSID\{FC12A963-292F-4C18-9B5F-C9D7B8721A05}\DefaultIcon", "", "\StaticStore\Start\DLL\EuroKeyboard\eurokbd.dll,0")
+ RegWriteString("HKCR", "CLSID\{FC12A963-292F-4C18-9B5F-C9D7B8721A05}\InprocServer32", "", "\StaticStore\Start\DLL\EuroKeyboard\eurokbd.dll")
+ RegWriteString("HKCU", "ControlPanel\Sip", "DefaultIm", "{FC12A963-292F-4C18-9B5F-C9D7B8721A05}")
+ 
+ #Ассоциация с MortScript
+ MortPath = "\StaticStore\Start\MortScript.exe"
+ RegWriteString("HKCR",".mscr","", "mscrfile")
+ RegWriteString("HKCR","mscrfile\DefaultIcon","",MortPath & ",0")
+ RegWriteString("HKCR","mscrfile\Shell\Open\Command","","""" & MortPath & """ ""%1""")
+
+ #Ассоциация с AutohotkeyCE
+ AHKPath = "\StaticStore\Start\AutohotkeyCE.exe"
+ RegWriteString("HKCR",".ahk","", "AutoHotkeyScript")
+ RegWriteString("HKCR","AutoHotkeyScript\DefaultIcon","",AHKPath & ",0")
+ RegWriteString("HKCR","AutoHotkeyScript\Shell\Open\Command","","""" & AHKPath & """ ""%1""")
+
+#установка GPS pl2303
+ RegDeleteKey("HKLM", "Drivers\USB\LoadClients\1659_8963_1024\Default\Default\RS232_USB", TRUE, TRUE)
+ RegWriteString("HKLM","Drivers\USB\LoadClients\1659_8963_1024\Default\Default\RS232_USB","FriendlyName", "USB-Serial Controller D,pl2303")
+ RegWriteString("HKLM","Drivers\USB\LoadClients\1659_8963_1024\Default\Default\RS232_USB","Tsp", "Unimodem.dll")
+ RegWriteString("HKLM","Drivers\USB\LoadClients\1659_8963_1024\Default\Default\RS232_USB","Prefix", "COM")
+ RegWriteString("HKLM","Drivers\USB\LoadClients\1659_8963_1024\Default\Default\RS232_USB","Dll", "\Staticstore\Start\dll\232usb.dll")
+ RegWriteDWord("HKLM","Drivers\USB\LoadClients\1659_8963_1024\Default\Default\RS232_USB","UsbMode", "257")
+ RegWriteDWord("HKLM","Drivers\USB\LoadClients\1659_8963_1024\Default\Default\RS232_USB","SendEndp", "2")
+ RegWriteDWord("HKLM","Drivers\USB\LoadClients\1659_8963_1024\Default\Default\RS232_USB","ReceiveEndp", "131")
+ RegWriteDWord("HKLM","Drivers\USB\LoadClients\1659_8963_1024\Default\Default\RS232_USB","ClassEndp", "129")
+ RegWriteDWord("HKLM","Drivers\USB\LoadClients\1659_8963_1024\Default\Default\RS232_USB","DeviceType", "1")
+ RegWriteDWord("HKLM","Drivers\USB\LoadClients\1659_8963_1024\Default\Default\RS232_USB","Index", "5")
+
+ #установка модема pl2303 E1550, E1750 etc
+ RegDeleteKey("HKLM", "Drivers\USB\LoadClients\4817_4097_0\Default\Default\232usb.dll", TRUE, TRUE)
+ RegWriteString("HKLM","Drivers\USB\LoadClients\4817_4097_0\Default\Default\232usb.dll","FriendlyName", "HUAWEI Mobile,cdc")
+ RegWriteString("HKLM","Drivers\USB\LoadClients\4817_4097_0\Default\Default\232usb.dll","Tsp", "Unimodem.dll")
+ RegWriteString("HKLM","Drivers\USB\LoadClients\4817_4097_0\Default\Default\232usb.dll","Prefix", "COM")
+ RegWriteString("HKLM","Drivers\USB\LoadClients\4817_4097_0\Default\Default\232usb.dll","Dll", "\Staticstore\Start\dll\232usb.dll")
+ RegWriteDWord("HKLM","Drivers\USB\LoadClients\4817_4097_0\Default\Default\232usb.dll","UsbMode", "257")
+ RegWriteDWord("HKLM","Drivers\USB\LoadClients\4817_4097_0\Default\Default\232usb.dll","SendEndp", "1")
+ RegWriteDWord("HKLM","Drivers\USB\LoadClients\4817_4097_0\Default\Default\232usb.dll","ReceiveEndp", "130")
+ RegWriteDWord("HKLM","Drivers\USB\LoadClients\4817_4097_0\Default\Default\232usb.dll","ClassEndp", "129")
+ RegWriteDWord("HKLM","Drivers\USB\LoadClients\4817_4097_0\Default\Default\232usb.dll","DeviceType", "1")
+ RegWriteDWord("HKLM","Drivers\USB\LoadClients\4817_4097_0\Default\Default\232usb.dll","Index", "6")
+
+Path=SystemPath("ScriptPath")
+ 
+#backup = Question("BackUp Staticstore?","BackUp","YESNo" )
+#If(backup = 1) 
+#MkDir(Path&"\..\BackUp")
+#XCopy("\StaticStore\*.*",Path&"\..\BackUp",True,True)
+#EndIf
+
+Copy("\StaticStore\book.bk", Path&"\book.bk",True)
+Copy("\StaticStore\BTEnv.txt", Path&"\BTEnv.txt",True)
+Copy("\StaticStore\mmc.ini", Path&"\mmc.ini",True)
+Delete("StaticStore\Menu\LadaTools\INI\NewMenuVersion.ini")
+XCopy("\StaticStore\Menu\LadaTools\INI\*.*",Path&"\Menu\LadaTools\INI",True,True)
+XCopy("\StaticStore\Menu\LadaTools\Skin\Radio\Stations\*.*",Path&"\Menu\LadaTools\Skin\Radio\Stations",True,True)
+Copy("\StaticStore\Menu\LadaTools\LadaMedia\Audio\playlist.npl", Path&"\Menu\LadaTools\LadaMedia\Audio\playlist.npl",True)
+Copy("\StaticStore\Menu\LadaTools\LadaMedia\Audio\config.dat", Path&"\Menu\LadaTools\LadaMedia\Audio\config.dat",True)
+Copy("\StaticStore\Menu\LadaTools\LadaMedia\Audio\preset.eql", Path&"\Menu\LadaTools\LadaMedia\Audio\preset.eql",True)
+Copy("\StaticStore\Menu\LadaTools\LadaMedia\LadaPlayer\LadaSound.pls", Path&"\Menu\LadaTools\LadaMedia\LadaPlayer\LadaSound.pls",True)
+Copy("\StaticStore\Menu\LadaTools\Tools\GPRS\GPRS.ini", Path&"\Menu\LadaTools\Tools\GPRS\GPRS.ini",True)
+DelTree("\StaticStore\*.*")
+
+ #Копирование файлов в StaticStore
+ XCopy(Path&"\*.*","\StaticStore",True,True)
+ Delete("StaticStore\Install.mscr")
+ Delete("StaticStore\MortScript.exe")
+ Delete("StaticStore\Install.exe")
+ Delete("StaticStore\UpDate.exe")
+ Delete("StaticStore\UpDate.mscr")
+ 
+ SleepMessage (5,'System will reset in 5 seconds','INFO')
+ reset
+
+EndIf 
+
+Exit
