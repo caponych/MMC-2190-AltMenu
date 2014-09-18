@@ -1,5 +1,5 @@
 initCANDashboard:
-
+RegWrite, REG_SZ, HKEY_CURRENT_USER, ControlPanel\Volume, Mute, 2
 new_highlight_ver	=2.5
 CanDashboardINI=%A_ScriptDir%\ini\CanDashboard.ini
 
@@ -9,6 +9,7 @@ if (LastCanDashboardINIRead<>1){
 	IfExist, %CanDashboardINI% 
 	{
 		IniRead, highlight_ver     	, %CanDashboardINI%, Dashboard		, highlight_ver 
+		;Проверяем версию
 		if (highlight_ver <> new_highlight_ver) {
 			FileDelete, %CanDashboardINI%
 			need_default=1
@@ -87,8 +88,6 @@ if (LastCanDashboardINIRead<>1){
 	SoundWarn=%A_ScriptDir%\skin\can\can_sound_warn.wav
 	SoundAlarm=%A_ScriptDir%\skin\can\can_sound_alarm.wav
 
-
-
 	SaverFont_N=s80 %fCanN%
 	SaverFont_Warn=s80 cff9600 
 	SaverFont_Alarm=s80 cf70000
@@ -97,22 +96,22 @@ if (LastCanDashboardINIRead<>1){
 	EngineTempIconCur=%EngineTempIcon%
 	GearBoxTempIcon=%A_ScriptDir%\skin\can\can_gearboxtemp_n.bmp
 	GearBoxTempIconCur=%GearBoxTempIcon%
-	SpeedIcon=%A_ScriptDir%\skin\can\can_speed_n%CurSpeedProfile_ID%.bmp
-	SpeedIconCur=%SpeedIcon%
 	FuelIcon=%A_ScriptDir%\skin\can\can_gas_n.bmp
 	FuelIconCur=%FuelIcon%
 	AirTempIcon=%A_ScriptDir%\skin\can\can_airtemp.bmp
 	AirTempIconCur=%AirTempIcon%
 	Fan1Running=0	
-	gosub CanDashboardINIRead
 	CountSpeedProfile	=2
+	StatusSpeedCur=Normal	
+	SaverSpeed=0	
+	
+	gosub CanDashboardINIRead
 	CanFont_Low=%def_CanFont_Low%
 	CanFont_Warn=%def_CanFont_Warn%
 	CanFont_Alarm=%def_CanFont_Alarm%	
 
 	SpeedIcon=%A_ScriptDir%\skin\can\can_speed_n%CurSpeedProfile_ID%.bmp
 	SpeedIconCur=%SpeedIcon%
-		
 	LastCanDashboardINIRead=1
 }
 	
@@ -142,16 +141,16 @@ Gui, 19:Destroy
 	x_param_shift:=60
 
 
-	Gui, 19:Add, Picture, vRSBIcon gRefreshValue 				x0 		y0	w40 h80, %A_ScriptDir%\skin\can\rsb.bmp
-	Gui, 19:Add, Picture, vRSFIcon gRefreshValue 				x0		y0	w40 h80, %A_ScriptDir%\skin\can\rsf.bmp
-	GuiControl, 19:Hide, RSFIcon 
-	GuiControl, 19:Hide, RSBIcon 
+	Gui, 19:Add, Picture, vDownIcon gRefreshValue 				x0 		y0	w40 h80, %A_ScriptDir%\skin\can\rsb.bmp
+	Gui, 19:Add, Picture, vUpIcon gRefreshValue 				x0		y0	w40 h80, %A_ScriptDir%\skin\can\rsf.bmp
+	GuiControl, 19:Hide, UpIcon 
+	GuiControl, 19:Hide, DownIcon 
 
 
 	y_pos:=w_height - 130   ;
 
 	Gui, 19:Font, s28 ce0e0e0, %rfont%   ; 
-	Gui, 19:Add, Text,  vSubm gSubmitCancel x0 y%y_pos% w800 h40 Center, Сохранить?   ; 
+	Gui, 19:Add, Text,  vSubm gSubmitCancel x300 y%y_pos% w200 h40 Center, Сохранить?   ; 
 	Gui, 19:Font, %CanFont_N%, %rfont%
 	Gui, 19:Add, Picture, vYesIcon gSubmitSettings 			x280 		y+20	w80 h80 , %A_ScriptDir%\skin\can\Yes.bmp    ;
 	Gui, 19:Add, Picture, vNoIcon gSubmitCancel 				x420		yp	w80 h80 , %A_ScriptDir%\skin\can\No.bmp    ;
@@ -211,6 +210,7 @@ if RegExMatch(Cur_Control, "^Speed$") {
 	Gui, 19:Add, Checkbox, vSpeedSoundNormal 	Checked%SpeedSoundNormal% 		x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом Normal
 	Gui, 19:Add, Checkbox, vSpeedSoundWarn		Checked%SpeedSoundWarn% 		x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом Warn
 	Gui, 19:Add, Checkbox, vSpeedSoundAlarm 	Checked%SpeedSoundAlarm% 		x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом Alarm
+	Gui, 19:Add, Checkbox, vSpeedBreakRadio 	Checked%SpeedBreakRadio% 		x%x_pos% y+5		w%w_text%		h30 	Left, Прерывать Радио
 	
 	x_pos:=400
 	y_pos:=80
@@ -254,6 +254,7 @@ if RegExMatch(Cur_Control, "^GearboxTemp$") {
 	Gui, 19:Add, Checkbox, vGearBoxTempSoundNormal 	Checked%GearBoxTempSoundNormal% 	x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом Normal
 	Gui, 19:Add, Checkbox, vGearBoxTempSoundWarn	Checked%GearBoxTempSoundWarn% 		x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом Warn
 	Gui, 19:Add, Checkbox, vGearBoxTempSoundAlarm 	Checked%GearBoxTempSoundAlarm% 		x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом Alarm
+	Gui, 19:Add, Checkbox, vGearBoxTempBreakRadio 	Checked%GearBoxTempBreakRadio% 		x%x_pos% y+5		w%w_text%		h30 	Left, Прерывать Радио
 	
 	x_pos:=400
 	y_pos:=80
@@ -292,6 +293,7 @@ if RegExMatch(Cur_Control, "^EngineTemp$") {
 	Gui, 19:Add, Checkbox, vEngineTempSoundNormal 	Checked%EngineTempSoundNormal% 		x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом Normal
 	Gui, 19:Add, Checkbox, vEngineTempSoundWarn	Checked%EngineTempSoundWarn% 		x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом Warn
 	Gui, 19:Add, Checkbox, vEngineTempSoundAlarm 	Checked%EngineTempSoundAlarm% 		x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом Alarm
+	Gui, 19:Add, Checkbox, vEngineTempBreakRadio 	Checked%EngineTempBreakRadio% 		x%x_pos% y+5		w%w_text%		h30 	Left, Прерывать Радио
 
 
 	;EngineTemp
@@ -332,6 +334,8 @@ if RegExMatch(Cur_Control, "^AirTemp$") {
 	Gui, 19:Add, Checkbox, vAirTempSoundNormal 	Checked%AirTempSoundNormal% 		x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом, нет гололёда
 	Gui, 19:Add, Checkbox, vAirTempSoundWarn	Checked%AirTempSoundWarn% 		x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом, есть гололёд
 ;	Gui, 19:Add, Checkbox, vAirTempSoundAlarm 	Checked%AirTempSoundAlarm% 		x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом Alarm
+	Gui, 19:Add, Checkbox, vAirTempBreakRadio 	Checked%AirTempBreakRadio% 		x%x_pos% y+5		w%w_text%		h30 	Left, Прерывать Радио
+
 
 	;AirTemp
 	x_pos:=400
@@ -365,6 +369,7 @@ if RegExMatch(Cur_Control, "^Fuel$") {
 	Gui, 19:Add, Checkbox, vFuelSoundNormal Checked%FuelSoundNormal% 		x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом Normal
 	Gui, 19:Add, Checkbox, vFuelSoundWarn	Checked%FuelSoundWarn% 			x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом Warn
 	Gui, 19:Add, Checkbox, vFuelSoundAlarm 	Checked%FuelSoundAlarm% 		x%x_pos% y+5		w%w_text%		h30 	Left, Оповещение сигналом Alarm
+	Gui, 19:Add, Checkbox, vFuelBreakRadio 	Checked%FuelBreakRadio% 		x%x_pos% y+5		w%w_text%		h30 	Left, Прерывать Радио
 
 	x_pos:=400
 	y_pos:=80
@@ -415,12 +420,12 @@ SelControl:
 	GuiControl, 19:Font, %Cur_Control%
 	Gui, 19:Font, %CanFont_N%
 	;подвинуть кнопки
-	GuiControl, 19:Hide, RSFIcon 
-	GuiControl, 19:Hide, RSBIcon 
-	GuiControl, 19:Move, RSBIcon, x%x_down% y%y_new%
-	GuiControl, 19:Move, RSFIcon, x%x_up% y%y_new%
-	GuiControl, 19:Show, RSFIcon 
-	GuiControl, 19:Show, RSBIcon 
+	GuiControl, 19:Hide, UpIcon 
+	GuiControl, 19:Hide, DownIcon 
+	GuiControl, 19:Move, DownIcon, x%x_down% y%y_new%
+	GuiControl, 19:Move, UpIcon, x%x_up% y%y_new%
+	GuiControl, 19:Show, UpIcon 
+	GuiControl, 19:Show, DownIcon 
 
 
 
@@ -429,7 +434,7 @@ return
 
 RefreshValue:
 	CName:=A_GuiControl
-	if (instr(CName,"RSFIcon")>0){
+	if (RegExMatch(CName, "^UpIcon$" )) {
 		;+1
 ;		CVal1=%A_ScriptDir%\skin\can\rsf.bmp
 ;		CVal2=%A_ScriptDir%\skin\can\rsfp.bmp
@@ -437,15 +442,15 @@ RefreshValue:
 		Temp:=%Cur_Control%+1
 		%Cur_Control%=%Temp%
 
-}else{
+	}
+	if (RegExMatch(CName, "^DownIcon$" )) {
 	;-1
 ;		CVal1=%A_ScriptDir%\skin\can\rsb.bmp
 ;		CVal2=%A_ScriptDir%\skin\can\rsbp.bmp
 ;		ButtonPressF(CName, CVal1, CVal2, 19)
 		Temp:=%Cur_Control%-1
 		%Cur_Control%=%Temp%
-
-}
+	}
 	GuiControl, 19:, %Cur_Control%, %Temp%
 return
 
@@ -457,9 +462,11 @@ SubmitSettings:
 	Gui, 19:Submit, NoHide
 
 	;Записать в ини файл
+	Gui, 19:Destroy
+	gosub DashboardHide
 	gosub CanDashboardINIWrite
 	gosub DashboardShow
-Gui, 19:Destroy
+
 return
 
 SubmitCancel:
@@ -468,8 +475,8 @@ SubmitCancel:
 	CName=NoIcon
 	ButtonPressF(CName, CVal1, CVal2, 19)
 	;перечитать все из ини файла
-	gosub CanDashboardINIRead	
 	Gui, 19:Destroy
+	gosub CanDashboardINIRead	
 return
 
 CanDashboardINIRead:
@@ -499,6 +506,7 @@ CanDashboardINIRead:
 	IniRead, EngineTempSoundNormal  , %CanDashboardINI%, EngineTemp		, EngineTempSoundNormal    	
 	IniRead, EngineTempSoundWarn    , %CanDashboardINI%, EngineTemp		, EngineTempSoundWarn    	
 	IniRead, EngineTempSoundAlarm   , %CanDashboardINI%, EngineTemp		, EngineTempSoundAlarm    	
+	IniRead, EngineTempBreakRadio	, %CanDashboardINI%, EngineTemp		, EngineTempBreakRadio    	
 	IniRead, Min_EngineTemp       	, %CanDashboardINI%, EngineTemp		, Min_EngineTemp      	
 	IniRead, Warn_EngineTemp      	, %CanDashboardINI%, EngineTemp		, Warn_EngineTemp     	
 	IniRead, Alarm_EngineTemp     	, %CanDashboardINI%, EngineTemp		, Alarm_EngineTemp    	
@@ -508,6 +516,7 @@ CanDashboardINIRead:
 	IniRead, FuelSoundNormal  	, %CanDashboardINI%, Fuel		, FuelSoundNormal    	
 	IniRead, FuelSoundWarn    	, %CanDashboardINI%, Fuel		, FuelSoundWarn    	
 	IniRead, FuelSoundAlarm   	, %CanDashboardINI%, Fuel		, FuelSoundAlarm    	
+	IniRead, FuelBreakRadio		, %CanDashboardINI%, Fuel		, FuelBreakRadio    	
 	IniRead, Warn_Fuel        	, %CanDashboardINI%, Fuel		, Warn_Fuel           	
 	IniRead, Alarm_Fuel       	, %CanDashboardINI%, Fuel		, Alarm_Fuel    
 	                                                                        
@@ -516,6 +525,7 @@ CanDashboardINIRead:
 	IniRead, GearBoxTempSoundNormal , %CanDashboardINI%, GearBoxTemp	, GearBoxTempSoundNormal    	
 	IniRead, GearBoxTempSoundWarn   , %CanDashboardINI%, GearBoxTemp	, GearBoxTempSoundWarn    	
 	IniRead, GearBoxTempSoundAlarm  , %CanDashboardINI%, GearBoxTemp	, GearBoxTempSoundAlarm    	
+	IniRead, GearBoxTempBreakRadio  , %CanDashboardINI%, GearBoxTemp	, GearBoxTempBreakRadio    	
 	IniRead, Min_GearBoxTemp      	, %CanDashboardINI%, GearBoxTemp	, Min_GearBoxTemp     	
 	IniRead, Warn_GearBoxTemp     	, %CanDashboardINI%, GearBoxTemp	, Warn_GearBoxTemp    	
 	IniRead, Alarm_GearBoxTemp    	, %CanDashboardINI%, GearBoxTemp	, Alarm_GearBoxTemp   	
@@ -525,13 +535,16 @@ CanDashboardINIRead:
 	IniRead, AirTempSoundNormal   	, %CanDashboardINI%, AirTemp		, AirTempSoundNormal    	
 	IniRead, AirTempSoundWarn    	, %CanDashboardINI%, AirTemp		, AirTempSoundWarn    	
 ;	IniRead, AirTempSoundAlarm    	, %CanDashboardINI%, AirTemp		, AirTempSoundAlarm    	
+	IniRead, AirTempBreakRadio	, %CanDashboardINI%, AirTemp		, AirTempBreakRadio    	
 	IniRead, Warn_Max_AirTemp     	, %CanDashboardINI%, AirTemp		, Warn_Max_AirTemp    	
-	IniRead, Warn_Min_AirTemp     	, %CanDashboardINI%, AirTemp		, Warn_Min_AirTemp    	
+	IniRead, Warn_Min_AirTemp     	, %CanDashboardINI%, AirTemp		, Warn_Min_AirTemp    
+		
 	IniRead, SpeedChangeIcon    	, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, SpeedChangeIcon%CurSpeedProfile_ID%    
 	IniRead, SpeedChangeFont     	, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, SpeedChangeFont%CurSpeedProfile_ID%    
 	IniRead, SpeedSoundNormal     	, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, SpeedSoundNormal%CurSpeedProfile_ID%   
 	IniRead, SpeedSoundWarn     	, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, SpeedSoundWarn%CurSpeedProfile_ID%    
 	IniRead, SpeedSoundAlarm     	, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, SpeedSoundAlarm%CurSpeedProfile_ID%  	 
+	IniRead, SpeedBreakRadio	, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, SpeedBreakRadio%CurSpeedProfile_ID%
 	IniRead, Warn_Speed     	, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, Warn_Speed%CurSpeedProfile_ID%    	 
 	IniRead, Alarm_Speed     	, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, Alarm_Speed%CurSpeedProfile_ID%        
 	if (CurSpeedProfile_ID=1) {
@@ -574,6 +587,7 @@ CanDashboardINIWrite:
 	IniWrite, %EngineTempSoundNormal%	, %CanDashboardINI%, EngineTemp		, EngineTempSoundNormal    	
 	IniWrite, %EngineTempSoundWarn% 	, %CanDashboardINI%, EngineTemp		, EngineTempSoundWarn    	
 	IniWrite, %EngineTempSoundAlarm% 	, %CanDashboardINI%, EngineTemp		, EngineTempSoundAlarm    	
+	IniWrite, %EngineTempBreakRadio% 	, %CanDashboardINI%, EngineTemp		, EngineTempBreakRadio    	
 	IniWrite, %Min_EngineTemp%		, %CanDashboardINI%, EngineTemp		, Min_EngineTemp      	
 	IniWrite, %Warn_EngineTemp%		, %CanDashboardINI%, EngineTemp		, Warn_EngineTemp     	
 	IniWrite, %Alarm_EngineTemp%		, %CanDashboardINI%, EngineTemp		, Alarm_EngineTemp    	
@@ -583,6 +597,7 @@ CanDashboardINIWrite:
 	IniWrite, %FuelSoundNormal%		, %CanDashboardINI%, Fuel		, FuelSoundNormal    	
 	IniWrite, %FuelSoundWarn%		, %CanDashboardINI%, Fuel		, FuelSoundWarn    	
 	IniWrite, %FuelSoundAlarm%		, %CanDashboardINI%, Fuel		, FuelSoundAlarm    	
+	IniWrite, %FuelBreakRadio% 		, %CanDashboardINI%, Fuel		, FuelBreakRadio    	
 	IniWrite, %Warn_Fuel%			, %CanDashboardINI%, Fuel		, Warn_Fuel           	
 	IniWrite, %Alarm_Fuel%			, %CanDashboardINI%, Fuel		, Alarm_Fuel    
 
@@ -591,6 +606,7 @@ CanDashboardINIWrite:
 	IniWrite, %GearBoxTempSoundNormal% 	, %CanDashboardINI%, GearBoxTemp	, GearBoxTempSoundNormal    	
 	IniWrite, %GearBoxTempSoundWarn% 	, %CanDashboardINI%, GearBoxTemp	, GearBoxTempSoundWarn    	
 	IniWrite, %GearBoxTempSoundAlarm%	, %CanDashboardINI%, GearBoxTemp	, GearBoxTempSoundAlarm    	
+	IniWrite, %GearBoxTempBreakRadio% 	, %CanDashboardINI%, GearBoxTemp	, GearBoxTempBreakRadio    	
 	IniWrite, %Min_GearBoxTemp%		, %CanDashboardINI%, GearBoxTemp	, Min_GearBoxTemp     	
 	IniWrite, %Warn_GearBoxTemp%		, %CanDashboardINI%, GearBoxTemp	, Warn_GearBoxTemp    	
 	IniWrite, %Alarm_GearBoxTemp%		, %CanDashboardINI%, GearBoxTemp	, Alarm_GearBoxTemp   	
@@ -600,13 +616,16 @@ CanDashboardINIWrite:
 	IniWrite, %AirTempSoundNormal%		, %CanDashboardINI%, AirTemp		, AirTempSoundNormal    	
 	IniWrite, %AirTempSoundWarn%		, %CanDashboardINI%, AirTemp		, AirTempSoundWarn    	
 ;	IniWrite, %AirTempSoundAlarm%		, %CanDashboardINI%, AirTemp		, AirTempSoundAlarm    	
+	IniWrite, %AirTempBreakRadio% 		, %CanDashboardINI%, AirTemp		, AirTempBreakRadio    	
 	IniWrite, %Warn_Max_AirTemp%		, %CanDashboardINI%, AirTemp		, Warn_Max_AirTemp    	
 	IniWrite, %Warn_Min_AirTemp%		, %CanDashboardINI%, AirTemp		, Warn_Min_AirTemp    	
+	
 	IniWrite, %SpeedChangeIcon%		, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, SpeedChangeIcon%CurSpeedProfile_ID%
 	IniWrite, %SpeedChangeFont%		, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, SpeedChangeFont%CurSpeedProfile_ID%    	
 	IniWrite, %SpeedSoundNormal%		, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, SpeedSoundNormal%CurSpeedProfile_ID%   	
 	IniWrite, %SpeedSoundWarn%		, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, SpeedSoundWarn%CurSpeedProfile_ID%    	
 	IniWrite, %SpeedSoundAlarm%		, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, SpeedSoundAlarm%CurSpeedProfile_ID%  	
+	IniWrite, %SpeedBreakRadio% 		, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, SpeedBreakRadio%CurSpeedProfile_ID%
 	IniWrite, %Warn_Speed%			, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, Warn_Speed%CurSpeedProfile_ID%    	
 	IniWrite, %Alarm_Speed%			, %CanDashboardINI%, Speed%CurSpeedProfile_ID%	, Alarm_Speed%CurSpeedProfile_ID%
 

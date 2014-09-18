@@ -65,8 +65,6 @@ Gui, 17:Add, Picture, vCheckEngine gCheckEngineA x50 y0 w40 h40, %A_ScriptDir%\s
 Gui, 17:Add, Picture, vOilPressure gDashBoardRun x100 y0 w40 h40, %A_ScriptDir%\skin\can\can_oilpresure.bmp
 Gui, 17:Add, Picture, vBatIcon  gCanDashboardSettings x150 y0 w40 h40, %A_ScriptDir%\skin\can\can_bat.bmp
 
-
-
 ;вывод параметров
 if (ShowEngineTemp+ShowGearBoxTemp+ShowAirTemp+ShowSpeed+ShowFuel =  5 ){
 	ShowAirTemp=0
@@ -99,10 +97,10 @@ if (ShowEngineTemp+ShowGearBoxTemp+ShowAirTemp+ShowSpeed+ShowFuel =  1 ){
 
 ;скорость
 if (ShowSpeed=1){
-	i-=40
+	i-=55
 	pos_text:=i+text_shift+5
-	Gui, 17:Add, Picture, vSpeedIcon gSwitchSpeedProfile x%i% y0 w40 h40, %SpeedIcon%
-	Gui, 17:Add, Text, vSpeed gCanDashBoardSettings  x%pos_text% y5 w115 h30 Left, 0.0 км/ч
+	Gui, 17:Add, Picture, vSpeedIcon gSwitchSpeedProfile x%i% y0 w40 h40, %SpeedIconCur%
+	Gui, 17:Add, Text, vSpeed gCanDashBoardSettings  x%pos_text% y5 w130 h30 Left, 0.0 км/ч
 	i-=icon_shift
 }
 ;коробка
@@ -156,7 +154,7 @@ return
 
 getallcan:
 	CanSpeedOld=-1	
-	SpeedIconCur=%SpeedIcon%
+;	SpeedIconCur=%SpeedIcon%
 	CanEngineTempOld=-100
 	EngineTempIconCur=%EngineTempIcon%
 	CanFuelOld=-1
@@ -169,6 +167,7 @@ getallcan:
 	CanWarningEngineTempFlagOld=-1
 	CanWarningOilPressureFlagOld=-1
 	CanCheckEngineOld=-1
+;	StatusSpeedCur=Normal
 
 gosub CheckEngine
 gosub OilPressureFlag
@@ -205,13 +204,10 @@ if (ShowEngineTemp=1){
 			}
 			
 		if(CanEngineTemp<>CanEngineTempOld and DashBoardRuning=1){
-
 				SoundFile=
-				CName=EngineTempIcon					
 				if ( Min_EngineTemp<CanEngineTemp and CanEngineTemp<Warn_EngineTemp){
 					CVal1=%A_ScriptDir%\skin\can\can_enginetemp_n.bmp
 					CVal2=%A_ScriptDir%\skin\can\can_enginetemp_n.bmp
-					CName=EngineTempIcon		
 					If EngineTempSoundNormal {
 						SoundFile=%SoundNormal%
 					}
@@ -239,6 +235,7 @@ if (ShowEngineTemp=1){
 				}
 				if (EngineTempIconCur<>CVal1){
 					if EngineTempChangeIcon {
+						CName=EngineTempIcon
 						ButtonPress(CName, CVal1, CVal2, 17)
 					}
 					if !EngineTempChangeFont {
@@ -246,7 +243,7 @@ if (ShowEngineTemp=1){
 					}					
 					EngineTempIconCur=%CVal1%
 					GuiControl, 17:Font, EngineTemp
-					SoundPlay, %SoundFile%
+					PlayFile(SoundFile, EngineTempBreakRadio)
 				}
 				GuiControl, 17:, EngineTemp, %CanEngineTemp% °C
 				Gui, 17:Font, %CanFont_N%, %rfont%	
@@ -271,7 +268,6 @@ if ShowFuel {
 		}
 		if(CanFuel<>CanFuelOld and DashBoardRuning=1){
 				SoundFile=
-				CName=FuelIcon
 				if (CanFuel>Warn_Fuel){
 					CVal1=%A_ScriptDir%\skin\can\can_gas_n.bmp
 					CVal2=%A_ScriptDir%\skin\can\can_gas_n.bmp
@@ -298,13 +294,14 @@ if ShowFuel {
 				}
 				if (FuelIconCur<>CVal1){
 					if FuelChangeIcon {
+						CName=FuelIcon
 						ButtonPress(CName, CVal1, CVal2, 17)
 					}
 					if !FuelChangeFont {
 						Gui, 17:Font, %CanFont_N%, %rfont%	
 					}					
 					GuiControl, 17:Font, Fuel
-					SoundPlay, %SoundFile%
+					PlayFile(SoundFile, FuelBreakRadio)
 					FuelIconCur:=CVal1
 				}
 				GuiControl, 17:, Fuel, %CanFuel% л.
@@ -329,9 +326,8 @@ if ShowGearBoxTemp {
 		DashBoardAutoStart=1
 		goto DashBoardShow
 	}
-		if(CanGearboxTemp<>CanGearboxTempOld and DashBoardRuning=1  ){
+		if(CanGearboxTemp<>CanGearboxTempOld and DashBoardRuning=1){
 			SoundFile=
-			CName=GearBoxTempIcon
 			if (Min_GearBoxTemp < CanGearboxTemp and CanGearboxTemp < Warn_GearBoxTemp ) {
 				CVal1=%A_ScriptDir%\skin\can\can_gearboxtemp_n.bmp
 				CVal2=%A_ScriptDir%\skin\can\can_gearboxtemp_n.bmp
@@ -364,14 +360,15 @@ if ShowGearBoxTemp {
 								
 			}
 			if (GearBoxTempIconCur <> CVal1){
-				if GearBoxChangeIcon {
+				if GearBoxTempChangeIcon {
+					CName=GearBoxTempIcon
 					ButtonPress(CName, CVal1, CVal2, 17)
 				}
-				if !GearBoxChangeFont {
+				if !GearBoxTempChangeFont {
 					Gui, 17:Font, %CanFont_N%, %rfont%
 				}
 				GuiControl, 17:Font, GearboxTemp
-				SoundPlay, %SoundFile%				
+				PlayFile(SoundFile, GearboxTempBreakRadio)
 				GearBoxTempIconCur:=CVal1
 			}
 			GuiControl, 17:, GearboxTemp, %CanGearboxTemp% °C
@@ -399,7 +396,6 @@ if (ShowAirTemp=1) {
 
 		if(CanAirTemp<>CanAirTempOld and DashBoardRuning=1) {
 			SoundFile=
-			CName=AirTempIcon			
 			if (CanAirTemp or < Warn_Min_AirTemp or Warn_Max_AirTemp < CanAirTemp){
 				CVal1=%A_ScriptDir%\skin\can\can_airtemp.bmp
 				CVal2=%A_ScriptDir%\skin\can\can_airtemp.bmp
@@ -410,20 +406,21 @@ if (ShowAirTemp=1) {
 			if (Warn_Min_AirTemp<=CanAirTemp and CanAirTemp <= Warn_Max_AirTemp){
 				CVal1=%A_ScriptDir%\skin\can\can_airtemp_warn.bmp
 				CVal2=%A_ScriptDir%\skin\can\can_airtemp_warn.bmp
-				Gui, 17:Font, %CanFont_Low%, %rfont%	
+				Gui, 17:Font, %CanFont_Warn%, %rfont%	
 				If AirTempSoundWarn {
 					SoundFile=%SoundWarn%
 				}
 			}									
 			if (AirTempIconCur<>CVal1){
 				if AirTempChangeIcon {
+					CName=AirTempIcon			
 					ButtonPress(CName, CVal1, CVal2, 17)
 				}
 				if !AirTempChangeFont {
 					Gui, 17:Font, %CanFont_N%, %rfont%
 				}
 				GuiControl, 17:Font, AirTemp
-				SoundPlay, %SoundFile%				
+				PlayFile(SoundFile, AirTempBreakRadio)
 				AirTempIconCur:=CVal1
 			}
 			GuiControl, 17:, AirTemp, %CanAirTemp% °C
@@ -441,88 +438,84 @@ return
 ChangeSpeed:
 CanSpeed:=DllCall(Can_GetSpeed, "Float")
 SaverSpeed:=Round(CanSpeed)	
-CanSpeed:=Round(CanSpeed,1)	
+CanSpeed:=Round(CanSpeed,1)
 
-;Saver
+SoundFile=
 
-if (SaverRuning and SaverSpeed<>SaverSpeedOld ) {
-		if (SaverSpeed < Warn_Speed ){	
+	if (DashBoardRuning=0 and CanSpeed>=Warn_Speed and CanAutoShowAllow=1){
+		DashBoardAutoStart=1
+		goto DashBoardShow
+	}
+		
+
+	if (CanSpeed<>CanSpeedOld) {
+		if (CanSpeed < Warn_Speed ){	
 			SaverFont=%SaverFont_N%
+			StatusSpeed=Normal
+			CVal1=%A_ScriptDir%\skin\can\can_speed_n%CurSpeedProfile_ID%.bmp	
+			CVal2=%A_ScriptDir%\skin\can\can_speed_n%CurSpeedProfile_ID%.bmp
+			CanFont=%CanFont_N%
+			If SpeedSoundNormal {
+				SoundFile=%SoundNormal%
+			}	
 		}
-		if (Warn_Speed<=SaverSpeed and SaverSpeed < Alarm_Speed ){
+		if (Warn_Speed<=CanSpeed and CanSpeed < Alarm_Speed ){
 			SaverFont=%SaverFont_Warn%
+			StatusSpeed=Warn
+			CVal1=%A_ScriptDir%\skin\can\can_speed_warn.bmp	
+			CVal2=%A_ScriptDir%\skin\can\can_speed_warn.bmp	
+			CanFont=%CanFont_Warn%
+			If SpeedSoundWarn {
+				SoundFile=%SoundWarn%
+			}			
 		}
-		if (Alarm_Speed<=SaverSpeed){
+		if (Alarm_Speed<=CanSpeed){
 			SaverFont=%SaverFont_Alarm%
+			StatusSpeed=Alarm
+			CVal1=%A_ScriptDir%\skin\can\can_speed_alarm.bmp
+			CVal2=%A_ScriptDir%\skin\can\can_speed_alarm.bmp
+			CanFont=%CanFont_Alarm%									
+			if SpeedSoundAlarm {
+				SoundFile=%SoundAlarm% 
+			}		
 		}
-		if !SpeedChangeFont {
-			SaverFont=%SaverFont_N%
-		}
-		
-		Gui, 3:Font, %SaverFont%, %rfont%
-		GuiControl, 3:Font, SaverSpeed
-		GuiControl, 3:, SaverSpeed, %SaverSpeed% км/ч
-		SaverSpeedOld:=SaverSpeed
-}		
-
-;Dashboard
-if (ShowSpeed=1) {
-		
-		
-		if (DashBoardRuning=0 and CanSpeed>=Warn_Speed and CanAutoShowAllow=1){
-			DashBoardAutoStart=1
-			goto DashBoardShow
-		}
-			if(CanSpeed<>CanSpeedOld and DashBoardRuning=1){
-				SoundFile=
-				CName=SpeedIcon
-				if (CanSpeed < Warn_Speed ){
-					CVal1=%A_ScriptDir%\skin\can\can_speed_n%CurSpeedProfile_ID%.bmp	
-					CVal2=%A_ScriptDir%\skin\can\can_speed_n%CurSpeedProfile_ID%.bmp
-					CName=SpeedIcon
-					If SpeedSoundNormal {
-						SoundFile=%SoundNormal%
-					}	
-				}			
-				if (Warn_Speed<=CanSpeed and CanSpeed < Alarm_Speed ){
-					CVal1=%A_ScriptDir%\skin\can\can_speed_warn.bmp	
-					CVal2=%A_ScriptDir%\skin\can\can_speed_warn.bmp	
-					Gui, 17:Font, %CanFont_Warn%, %rfont%										
-					If SpeedSoundWarn {
-						SoundFile=%SoundWarn%
-					}			
-
+		;Изменение иконок, шрифтов, звуки
+		if (StatusSpeed <> StatusSpeedCur){
+			If SaverRuning {
+				if SpeedChangeFont {
+					Gui, 3:Font, %SaverFont%, %rfont%
+					GuiControl, 3:Font, SaverSpeed
+					GuiControl, 3:Font, SpeedText				
+					Gui, 3:Font, %CanFot_N%, %rfont%
 				}
-				if (Alarm_Speed<=CanSpeed){
-					CVal1=%A_ScriptDir%\skin\can\can_speed_alarm.bmp
-					CVal2=%A_ScriptDir%\skin\can\can_speed_alarm.bmp
-					Gui, 17:Font, %CanFont_Alarm%, %rfont%										
-					if SpeedSoundAlarm {
-						SoundFile=%SoundAlarm% 
-					}		
-				}
-
-				if (SpeedIconCur<>CVal1){
-					if SpeedChangeIcon {
-						ButtonPress(CName, CVal1, CVal2, 17)
-					}
-					if !SpeedChangeFont {
-						Gui, 17:Font, %CanFont_N%, %rfont%
-					}
-					GuiControl, 17:Font, Speed
-					SoundPlay, %SoundFile%				
-					SpeedIconCur:=CVal1
-					GuiControl, 17:Font, Speed
-				}
-				GuiControl, 17:, Speed, %CanSpeed% км/ч
-				Gui, 17:Font, %CanFont_N%, %rfont%					
-				CanSpeedOld:=CanSpeed				
 			}
-		if(DashBoardAutoStart=1){
-			gosub DashBoardAutoHideCheck
+			if (DashBoardRuning and ShowSpeed) {
+				if SpeedChangeIcon {
+					CName=SpeedIcon
+					ButtonPress(CName, CVal1, CVal2, 17)
+				}
+				if SpeedChangeFont {
+					Gui, 17:Font, %CanFont%, %rfont%
+					GuiControl, 17:Font, Speed
+					Gui, 17:Font, %CanFont_N%, %rfont%
+				}
+				PlayFile(SoundFile, SpeedBreakRadio)
+			}
+			StatusSpeedCur:=StatusSpeed
 		}
-}		
-
+		;обновление значений
+		If (SaverRuning and SaverSpeedOld<>SaverSpeed){
+			GuiControl, 3:, SaverSpeed, %SaverSpeed%
+		}
+		if (DashBoardRuning and ShowSpeed and CanSpeed <> CanSpeedOld) {
+			GuiControl, 17:, Speed, %CanSpeed% км/ч
+		}		
+		SaverSpeedOld:=SaverSpeed
+		CanSpeedOld:=CanSpeed		
+	}
+	if(DashBoardAutoStart=1){
+		gosub DashBoardAutoHideCheck
+	}
 return
 
 
@@ -735,6 +728,7 @@ SwitchSpeedProfile:
 	CVal2=%A_ScriptDir%\skin\can\can_speed_n%CurSpeedProfile_ID%.bmp
 	CName=SpeedIcon
 	ButtonPress(CName, CVal1, CVal2, 17)
+	SpeedIconCur=%A_ScriptDir%\skin\can\can_speed_n%CurSpeedProfile_ID%.bmp
 return 
 
 ;-----------------------------------------------------------------------------------------------------
@@ -893,4 +887,18 @@ global MsgCountStart
 		{
 		MsgCountStart=0
 		}
+}
+PlayFile(FileName, BreakRadio) {
+global Api_SetActivateMode
+global ActivateModeLastState
+	if (StrLen(FileName)>0) {
+				if (ActivateModeLastState=0 and BreakRadio) {
+					DllCall(Api_SetActivateMode,Int,1) ;0-радио 1-медиа 3-бт+медиа 4-бт+радио
+					sleep, 1500
+					SoundPlay, %FileName% , wait	
+					DllCall(Api_SetActivateMode,Int,0)
+				}else{
+					SoundPlay, %FileName%	
+				}
+	}
 }

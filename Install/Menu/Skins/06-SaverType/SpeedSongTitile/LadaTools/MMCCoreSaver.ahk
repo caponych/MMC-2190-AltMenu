@@ -7,7 +7,7 @@ activewnds:=active_id
 activewnds:= activewnds + 0 ;переводим хэндл в десятичный вид
 
 SaverRuning=1
-SaverFont=s80 c%fcolor%
+;SaverFont=s80 c%fcolor%
 MouseGetPos, xss, yss
 RegRead, AudioRunning, HKEY_LOCAL_MACHINE, System\State\Nitrogen, Running
 RegRead, AudioSongArtist, HKEY_LOCAL_MACHINE, System\State\Nitrogen, SongArtist
@@ -20,8 +20,10 @@ Gui, 3:-SysMenu -Caption
 Gui, 3:Color, %guibackcolor%
 ;Спидометр
 ;Gui, 3:Font, s80 с%fcolor% , %rfont%
-Gui, 3:Font, %SaverFont%, %rfont%
-Gui, 3:Add, Text, vSaverSpeed gSaverClose  x0 y160 w800 h150 Center, %SaverSpeed% км/ч
+Gui, 3:Font, %SaverFont_N%, %rfont%
+Gui, 3:Add, Text, vSaverSpeed gSaverClose  x180 y160 w200 h150 Right, %SaverSpeed%
+Gui, 3:Add, Text, vSpeedText gSaverClose  x400 y160 w240 h150 Left, км/ч
+
 Gui, 3:Font, s12, %rfont%
 Gui, 3:Add, Text, vVolv x20 y440 w80 h20
 Gui, 3:Add, Text, 0x1 vQFreq x20 y20 w760 h20
